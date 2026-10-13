@@ -219,6 +219,18 @@
     $("#f-name").focus();
   });
 
+  /* ---------- Phone quick bar ---------- */
+  // Hide the bar while typing (keyboard is up) and while the contact form is on screen.
+  const quickbar = $("[data-quickbar]");
+  let typing = false, formVisible = false;
+  const syncBar = () => quickbar.classList.toggle("is-hidden", typing || formVisible);
+  document.addEventListener("focusin", (e) => { typing = e.target.matches("input, textarea, select"); syncBar(); });
+  document.addEventListener("focusout", () => { typing = false; syncBar(); });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([en]) => { formVisible = en.isIntersecting; syncBar(); }, { threshold: 0.15 })
+      .observe($("#contact"));
+  }
+
   /* ---------- Misc ---------- */
   $("[data-year]").textContent = new Date().getFullYear();
 })();
