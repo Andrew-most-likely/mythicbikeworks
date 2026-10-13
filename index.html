@@ -18,8 +18,9 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/hero-2400.webp" imagesrcset="assets/img/hero-1200.webp 1200w, assets/img/hero-2400.webp 2400w" imagesizes="100vw">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preload" as="image" imagesrcset="assets/img/hero-portrait-700.webp 700w, assets/img/hero-portrait-1100.webp 1100w" imagesizes="110vw" media="(max-width: 640px)" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw" media="(min-width: 641px)" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/styles.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -69,7 +70,7 @@
   <header class="site-header" data-header>
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="Mythic Bike Works, home">
-        <img src="assets/img/logo-wordmark.png" alt="Mythic Bike Works" width="734" height="322">
+        <img src="assets/img/logo-wordmark-220.webp" srcset="assets/img/logo-wordmark-220.webp 220w, assets/img/logo-wordmark-440.webp 440w" sizes="100px" alt="Mythic Bike Works" width="734" height="322">
       </a>
       <nav class="nav" aria-label="Main">
         <ul>
@@ -102,7 +103,10 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <img class="hero-img" src="assets/img/hero-2400.webp" srcset="assets/img/hero-1200.webp 1200w, assets/img/hero-2400.webp 2400w" sizes="100vw" alt="A rider in the air off a dirt jump in a pine forest" width="2400" height="1719" fetchpriority="high">
+      <picture>
+        <source media="(max-width: 640px)" srcset="assets/img/hero-portrait-700.webp 700w, assets/img/hero-portrait-1100.webp 1100w" sizes="110vw" width="1100" height="1790">
+        <img class="hero-img" src="assets/img/hero-1600.webp" srcset="assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw" alt="A rider in the air off a dirt jump in a pine forest" width="2400" height="1719" fetchpriority="high">
+      </picture>
       <div class="wrap hero-content">
         <p class="kicker">Bike shop · Peace Dale &amp; Wakefield, RI</p>
         <h1>Your bike,<br>dialed in.</h1>
@@ -137,7 +141,7 @@
           <p class="kicker">Service</p>
           <h2>Service &amp; repair</h2>
           <p class="sub">Road, gravel, mountain, commuter and kids' bikes. Drop-ins welcome.</p>
-          <img class="intro-img" src="assets/img/bottombracket.webp" alt="Bottom bracket being serviced with a shop tool" width="1000" height="1000" loading="lazy">
+          <img class="intro-img" src="assets/img/bottombracket-600.webp" srcset="assets/img/bottombracket-600.webp 600w, assets/img/bottombracket.webp 1000w" sizes="(max-width: 900px) 100vw, 400px" alt="Bottom bracket being serviced with a shop tool" width="1000" height="1000" loading="lazy">
         </div>
 
         <div>
@@ -195,7 +199,7 @@
             <p>Riders send forks and shocks from all over. Send us a message first and we'll reply with shipping instructions and a quote.</p>
             <a class="row-link" href="suspension-service/">How mail-in service works</a>
           </div>
-          <img class="intro-img" src="assets/img/linkage.webp" alt="Rear suspension linkage parts on a workbench with new bearings" width="1000" height="1000" loading="lazy">
+          <img class="intro-img" src="assets/img/linkage-600.webp" srcset="assets/img/linkage-600.webp 600w, assets/img/linkage.webp 1000w" sizes="(max-width: 900px) 100vw, 400px" alt="Rear suspension linkage parts on a workbench with new bearings" width="1000" height="1000" loading="lazy">
         </div>
 
         <div>
@@ -244,7 +248,7 @@
 
         <div class="duo">
           <article class="feature">
-            <img src="assets/img/hub.webp" alt="Building a wheel around a red hub" width="1000" height="1000" loading="lazy">
+            <img src="assets/img/hub-600.webp" srcset="assets/img/hub-600.webp 600w, assets/img/hub.webp 1000w" sizes="(max-width: 760px) 100vw, 560px" alt="Building a wheel around a red hub" width="1000" height="1000" loading="lazy">
             <h3>Hand-built wheelsets</h3>
             <p>Wheels change how a bike rides, weighs and handles. We build yours to match how you ride.</p>
             <dl class="specs">
@@ -255,7 +259,7 @@
           </article>
 
           <article class="feature">
-            <img src="assets/img/fatbike.webp" alt="A custom-built fat bike leaning against a weathered shed" width="1000" height="1000" loading="lazy">
+            <img src="assets/img/fatbike-600.webp" srcset="assets/img/fatbike-600.webp 600w, assets/img/fatbike.webp 1000w" sizes="(max-width: 760px) 100vw, 560px" alt="A custom-built fat bike leaning against a weathered shed" width="1000" height="1000" loading="lazy">
             <h3>Custom builds</h3>
             <p>A light, budget race bike for your kid or a top-shelf dream build. We help you plan it, build it and tune it.</p>
             <p>Special orders welcome. If it isn't carried locally, we'll find it.</p>
@@ -276,6 +280,7 @@
         <div class="head">
           <p class="kicker">Reviews</p>
           <h2 id="reviews-title">5.0 on Google</h2>
+          <p class="sub"><a href="https://www.google.com/maps/search/?api=1&amp;query=Mythic+Bike+Works+1207+Kingstown+Rd+Peace+Dale+RI" target="_blank" rel="noopener">Read every review on Google</a></p>
         </div>
         <div class="quotes">
           <figure class="quote">
@@ -460,7 +465,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <img class="footer-logo" src="assets/img/mbw-gear.png" alt="" width="240" height="240" loading="lazy">
+      <img class="footer-logo" src="assets/img/mbw-gear-96.webp" alt="" width="240" height="240" loading="lazy">
       <p><strong>Mythic Bike Works</strong><br>1207 Kingstown Rd, Peace Dale, RI 02879</p>
       <p><a href="tel:+14012180029">401-218-0029</a><br><a href="https://www.instagram.com/mythicbikeworks/" target="_blank" rel="noopener">Instagram</a></p>
       <p class="copy">© <span data-year>2026</span> Mythic Bike Works</p>
@@ -473,6 +478,6 @@
     <a href="#contact" class="quickbar-accent">Message</a>
   </nav>
 
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=3" defer></script>
 </body>
 </html>

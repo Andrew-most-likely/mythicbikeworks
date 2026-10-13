@@ -19,7 +19,7 @@ def up(fragment):
     f = re.sub(r'href="#([a-z]+)"', r'href="../#\1"', f)
     f = f.replace('href="cane-creek-service-center/"', 'href="../cane-creek-service-center/"')
     f = f.replace('href="suspension-service/"', 'href="../suspension-service/"')
-    f = f.replace('src="assets/', 'src="../assets/')
+    f = re.sub(r'(?<=[" ,])assets/', '../assets/', f)
     return f
 
 SITE = "https://mythicbikeworks.com"
@@ -62,7 +62,7 @@ def page(slug, title, desc, crumb, body, service, faqs):
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=3">
   <script type="application/ld+json">
 {json.dumps(ld, indent=2, ensure_ascii=False)}
   </script>
@@ -104,7 +104,7 @@ def page(slug, title, desc, crumb, body, service, faqs):
 
   {up(quick)}
 
-  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/main.js?v=3" defer></script>
 </body>
 </html>
 '''
