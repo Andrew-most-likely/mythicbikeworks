@@ -214,8 +214,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 760px) { .duo { grid-template-columns: 1fr; gap: 56px; } }
 
 .brands { margin-top: clamp(56px, 7vw, 88px); padding-top: 28px; border-top: 1px solid var(--line); }
-.brand-list { font-weight: 700; font-stretch: 112%; font-size: clamp(1.05rem, 1rem + .4vw, 1.3rem); line-height: 1.7; color: #3a3d38; }
-.brand-list span { color: #b9bab4; font-weight: 400; margin: 0 .35em; }
+.brand-list { display: flex; flex-wrap: wrap; font-weight: 700; font-stretch: 112%; font-size: clamp(1.05rem, 1rem + .4vw, 1.3rem); line-height: 1.7; color: #3a3d38; }
+.brand-list li { white-space: nowrap; }
+.brand-list li:not(:last-child)::after { content: "/"; color: #b9bab4; font-weight: 400; margin: 0 .5em; }
 
 /* Reviews */
 .quotes { display: grid; grid-template-columns: repeat(3, 1fr); }
