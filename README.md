@@ -41,7 +41,7 @@ Hours appear in three places. Change all three:
 
 ## Caching
 
-CSS and JS links end in `?v=N` (now 6). After changing `styles.css` or `main.js`, bump that number in
+CSS and JS links end in `?v=N` (now 7). After changing `styles.css` or `main.js`, bump that number in
 `index.html`, `thanks.html`, `404.html` and `tools/build_pages.py`, then run
 `python3 tools/build_pages.py`. `_headers` sets long caching on Cloudflare Pages.
 

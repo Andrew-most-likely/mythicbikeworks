@@ -83,7 +83,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 48px; padding: 0 24px;
-  border: 2px solid transparent; border-radius: var(--radius);
+  border: 2px solid transparent; border-radius: var(--radius); background: none;
   font: 700 .95rem/1 var(--font); font-stretch: 105%; letter-spacing: .01em;
   text-decoration: none; cursor: pointer; white-space: nowrap;
   transition: background-color .15s, border-color .15s, color .15s;
@@ -112,7 +112,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .header-phone { font-weight: 700; font-size: .95rem; text-decoration: none; padding-left: 26px; border-left: 1px solid rgba(255,255,255,.2); }
 .header-phone:hover { color: var(--red-on-dark); }
 .menu-btn { display: none; margin-left: auto; background: none; border: 0; color: inherit; width: 44px; height: 44px; cursor: pointer; place-items: center; }
-.mobile-menu { padding: 0 var(--gutter) 24px; max-height: calc(100svh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain; }
+.mobile-menu { padding: 0 var(--gutter) 24px; height: calc(100svh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain; }
 .mobile-menu a:not(.btn) { display: block; padding: 16px 0; font-weight: 700; font-stretch: 115%; font-size: 1.4rem; text-decoration: none; border-bottom: 1px solid var(--ink-line); }
 .mobile-menu .btn { margin-top: 20px; }
 @media (max-width: 960px) {
