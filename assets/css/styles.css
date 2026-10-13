@@ -424,3 +424,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .cta-band .btn-accent:hover { background: #2a2d29; }
 .simple-links { display: grid; gap: 10px; margin-top: 12px; }
 .simple-links a { color: #fff; font-weight: 600; text-decoration-color: var(--red-on-dark); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Skip layout and paint for sections below the fold until they near the screen.
+   "auto" remembers each section's real height once it has rendered. */
+main > section:not(:first-child) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
