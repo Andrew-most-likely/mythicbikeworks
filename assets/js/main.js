@@ -31,7 +31,7 @@
 
   // Highlight the nav link for the section in view.
   const navLinks = $$(".nav a");
-  const sections = navLinks.map((a) => $(a.getAttribute("href"))).filter(Boolean);
+  const sections = navLinks.filter((a) => a.getAttribute("href").startsWith("#")).map((a) => $(a.getAttribute("href"))).filter(Boolean);
   if ("IntersectionObserver" in window && sections.length) {
     const spy = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
@@ -75,17 +75,34 @@
   const status = $("[data-status]");
   const renderStatus = () => {
     const s = statusText();
-    if (!s) return;
+    if (!s || !status) return;
     status.innerHTML = `<strong>${s.label}</strong>, ${s.rest} · 1207 Kingstown Rd`;
   };
-  renderStatus();
-  setInterval(renderStatus, 60_000);
+  if (status) {
+    renderStatus();
+    setInterval(renderStatus, 60_000);
+  }
 
   const todayRow = $(`[data-hours] tr[data-day="${shopNow().day}"]`);
   if (todayRow) todayRow.classList.add("is-today");
 
-  /* ---------- Contact form ---------- */
+  /* ---------- Phone quick bar ---------- */
+  // Hide the bar while typing (keyboard is up) and while the contact form is on screen.
+  const quickbar = $("[data-quickbar]");
+  let typing = false, formVisible = false;
+  const syncBar = () => quickbar.classList.toggle("is-hidden", typing || formVisible);
+  document.addEventListener("focusin", (e) => { typing = e.target.matches("input, textarea, select"); syncBar(); });
+  document.addEventListener("focusout", () => { typing = false; syncBar(); });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([en]) => { formVisible = en.isIntersecting; syncBar(); }, { threshold: 0.15 })
+      .observe($("#contact") || document.createElement("div"));
+  }
+
+  /* ---------- Misc ---------- */
+  $("[data-year]").textContent = new Date().getFullYear();
+  /* ---------- Contact form (home page only) ---------- */
   const form = $("[data-form]");
+  if (!form) return;
   const done = $("[data-done]");
   const note = $("[data-form-status]");
   const submitBtn = $("[data-submit]");
@@ -187,6 +204,16 @@
     });
   }
   restoreDraft();
+
+  // Links from other pages pass the request type in the URL.
+  const params = new URLSearchParams(location.search);
+  if (params.get("inquiry")) {
+    const radio = $(`input[name="inquiry"][value="${CSS.escape(params.get("inquiry"))}"]`, form);
+    if (radio) { radio.checked = true; applyType(); }
+    const select = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
+    if (select && params.get("service")) select.value = params.get("service");
+    if (params.get("dropoff")) $("#f-when").value = params.get("dropoff");
+  }
   form.addEventListener("input", saveDraft);
   form.addEventListener("change", saveDraft);
 
@@ -308,18 +335,4 @@
     $("#f-name").focus();
   });
 
-  /* ---------- Phone quick bar ---------- */
-  // Hide the bar while typing (keyboard is up) and while the contact form is on screen.
-  const quickbar = $("[data-quickbar]");
-  let typing = false, formVisible = false;
-  const syncBar = () => quickbar.classList.toggle("is-hidden", typing || formVisible);
-  document.addEventListener("focusin", (e) => { typing = e.target.matches("input, textarea, select"); syncBar(); });
-  document.addEventListener("focusout", () => { typing = false; syncBar(); });
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(([en]) => { formVisible = en.isIntersecting; syncBar(); }, { threshold: 0.15 })
-      .observe($("#contact"));
-  }
-
-  /* ---------- Misc ---------- */
-  $("[data-year]").textContent = new Date().getFullYear();
 })();
