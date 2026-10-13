@@ -15,7 +15,7 @@
   const menu = $("[data-menu]");
 
   const onScroll = () => header.classList.toggle("is-solid", window.scrollY > 24);
-  onScroll();
+  requestAnimationFrame(onScroll); // read scroll position after first layout, not during it
   window.addEventListener("scroll", onScroll, { passive: true });
 
   const setMenu = (open) => {

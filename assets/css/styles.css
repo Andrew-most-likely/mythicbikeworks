@@ -2,6 +2,12 @@
    Palette is pulled from the shop itself: the black-and-white logo,
    bare steel, and anodized red parts on the bench. One accent, used sparingly. */
 
+/* Single-face fallback shown until Archivo loads. Naming the local fonts directly
+   keeps the browser from searching every installed font for a wide variant. */
+@font-face {
+  font-family: "Archivo Fallback";
+  src: local("Helvetica Neue"), local("Arial"), local("Roboto"), local("Liberation Sans");
+}
 /* Archivo, self-hosted (SIL Open Font License, see assets/fonts/OFL.txt). */
 @font-face {
   font-family: "Archivo";
@@ -26,7 +32,7 @@
   --red-hover: #a81f16;
   --red-on-dark: #ef4a3c;
 
-  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font: "Archivo", "Archivo Fallback", sans-serif;
 
   --radius: 3px;
   --wrap: 1200px;
