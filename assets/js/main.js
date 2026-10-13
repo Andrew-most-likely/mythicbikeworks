@@ -126,6 +126,7 @@
     if (radio) { radio.checked = true; applyType(); }
     const select = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
     if (select) select.value = link.dataset.service || "";
+    if (link.dataset.dropoff) $("#f-when").value = link.dataset.dropoff;
     saveDraft();
   }));
 

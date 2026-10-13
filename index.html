@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Mythic Bike Works · Bike Shop in Peace Dale &amp; Wakefield, RI</title>
-  <meta name="description" content="Full-service bike shop on the South County Bike Path in Peace Dale, RI. Suspension service, custom wheels, custom builds, tune-ups and repairs. Call 401-218-0029.">
+  <title>Mythic Bike Works · Bike Shop &amp; Cane Creek Service Center · Peace Dale, RI</title>
+  <meta name="description" content="Full-service bike shop in Peace Dale, RI and the only Cane Creek suspension service center on the East Coast. Cane Creek VIP dealer. Suspension service, custom wheels, builds and repairs. Mail-in service available.">
   <meta name="theme-color" content="#111311">
   <link rel="canonical" href="https://mythicbikeworks.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mythic Bike Works · Peace Dale, RI">
-  <meta property="og:description" content="Suspension service, custom wheels, builds and repairs. Right on the South County Bike Path.">
+  <meta property="og:description" content="The East Coast's only Cane Creek suspension service center. Suspension, wheels, builds and repairs on the South County Bike Path.">
   <meta property="og:image" content="https://mythicbikeworks.com/assets/img/og.jpg">
   <meta property="og:url" content="https://mythicbikeworks.com/">
   <meta name="twitter:card" content="summary_large_image">
@@ -31,6 +31,7 @@
     "logo": "https://mythicbikeworks.com/assets/img/mbw-512.png",
     "telephone": "+1-401-218-0029",
     "priceRange": "$$",
+    "description": "Full-service bike shop. Cane Creek VIP dealer and the only Cane Creek suspension service center on the East Coast.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1207 Kingstown Rd",
@@ -102,6 +103,18 @@
       </div>
     </section>
 
+    <!-- CANE CREEK -->
+    <section class="creds" aria-label="Cane Creek credentials">
+      <div class="wrap creds-inner">
+        <p class="creds-brand">Cane Creek</p>
+        <ul class="creds-list">
+          <li><strong>Suspension Service Center</strong> The only one on the East Coast</li>
+          <li><strong>VIP Dealer</strong> One of 9 in the U.S.</li>
+        </ul>
+        <a class="creds-link" href="#suspension">Suspension service</a>
+      </div>
+    </section>
+
     <!-- SERVICE -->
     <section class="section" id="service">
       <div class="wrap two-col">
@@ -159,9 +172,14 @@
     <section class="section section-dark" id="suspension">
       <div class="wrap two-col">
         <div class="col-intro">
-          <p class="kicker">Suspension</p>
+          <p class="kicker">Suspension · Cane Creek Service Center</p>
           <h2>Fork &amp; shock service</h2>
-          <p class="sub">Modern forks and shocks run on very little oil, and it breaks down fast. Regular service brings back small-bump feel and prevents expensive wear. All brands, done in-house.</p>
+          <p class="sub">We are the only Cane Creek suspension service center on the East Coast, and we service every other brand too. Modern forks and shocks run on very little oil, and it breaks down fast. Regular service brings back small-bump feel and prevents expensive wear.</p>
+          <div class="mailin">
+            <h3>Not local? Ship it to us.</h3>
+            <p>Riders send forks and shocks from all over. Send us a message first and we'll reply with shipping instructions and a quote.</p>
+            <a class="row-link" href="#contact" data-inquiry="suspension" data-dropoff="Shipping it in">Start a mail-in service</a>
+          </div>
           <img class="intro-img" src="assets/img/linkage.webp" alt="Rear suspension linkage parts on a workbench with new bearings" width="1000" height="1000" loading="lazy">
         </div>
 
@@ -231,7 +249,7 @@
 
         <div class="brands">
           <p class="kicker">Brands we work with</p>
-          <p class="brand-list">Transition <span>/</span> Ibis <span>/</span> Surly <span>/</span> Jamis <span>/</span> Industry&nbsp;Nine <span>/</span> Spank <span>/</span> NOX&nbsp;Composites <span>/</span> Light&nbsp;Bicycle <span>/</span> CushCore <span>/</span> DT&nbsp;Swiss <span>/</span> Sapim</p>
+          <p class="brand-list">Cane&nbsp;Creek <span>/</span> Transition <span>/</span> Ibis <span>/</span> Surly <span>/</span> Jamis <span>/</span> NOX&nbsp;Composites <span>/</span> Light&nbsp;Bicycle <span>/</span> CushCore <span>/</span> DT&nbsp;Swiss <span>/</span> Sapim</p>
         </div>
       </div>
     </section>
@@ -386,13 +404,14 @@
 
             <div class="field" data-show="suspension">
               <label for="f-susp">Fork / shock model</label>
-              <input id="f-susp" name="suspension_model" type="text" placeholder="e.g. Fox 36 Grip2, RockShox Super Deluxe">
+              <input id="f-susp" name="suspension_model" type="text" placeholder="e.g. Cane Creek Helm MKII, Fox 36, RockShox Super Deluxe">
             </div>
 
             <div class="field" data-show="service suspension">
-              <label for="f-when">Preferred drop-off <span class="opt">optional</span></label>
+              <label for="f-when">Drop-off <span class="opt">optional</span></label>
               <select id="f-when" name="preferred_dropoff">
                 <option value="">No preference</option>
+                <option>Shipping it in</option>
                 <option>Monday</option>
                 <option>Thursday</option>
                 <option>Friday</option>
