@@ -150,12 +150,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 .creds-list { display: flex; gap: 12px 40px; flex-wrap: wrap; flex: 1; }
 .creds-list li { display: flex; flex-direction: column; font-size: .95rem; color: var(--muted); line-height: 1.35; }
 .creds-list strong { color: var(--text); font-weight: 800; font-stretch: 110%; font-size: 1.05rem; }
+.creds-links { display: flex; gap: 10px 24px; flex-wrap: wrap; }
+.creds-ext { font-weight: 500; color: var(--muted); }
 .creds-link { font-weight: 700; font-size: .95rem; text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .creds-link:hover { color: var(--red); }
 @media (max-width: 640px) {
   .creds-brand { border-right: 0; padding-right: 0; width: 100%; }
   .creds-list { flex-direction: column; flex: none; width: 100%; }
-  .creds-link { width: 100%; }
+  .creds-links { width: 100%; }
 }
 
 #suspension .col-intro { position: static; }
