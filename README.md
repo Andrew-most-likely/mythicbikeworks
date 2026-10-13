@@ -9,6 +9,7 @@ thanks.html           shown after form submit when JavaScript is off
 assets/css/styles.css
 assets/js/main.js     header, open/closed status, form logic
 assets/img/           optimized photos and logos
+assets/fonts/         Archivo, self-hosted (SIL Open Font License)
 ```
 
 ## Preview locally
@@ -26,7 +27,8 @@ The form sends email through [Web3Forms](https://web3forms.com) (free, 250 submi
 1. Go to web3forms.com, enter the shop email address, and get an access key.
 2. In `index.html`, replace `YOUR_WEB3FORMS_ACCESS_KEY` with that key.
 
-Each email has a subject like "Part inquiry from Jane" and includes the inquiry type, bike, part, and message.
+Each email has a subject like "Part inquiry from Jane" and includes the inquiry type, the service picked,
+how the customer wants a reply (email, call or text), their bike, the part, and the message.
 Reply-to is set to the customer's email, so hitting Reply answers them directly.
 
 ## Hours

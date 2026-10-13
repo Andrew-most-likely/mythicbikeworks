@@ -120,11 +120,74 @@
   $$('input[name="inquiry"]', form).forEach((r) => r.addEventListener("change", applyType));
   applyType();
 
-  // Buttons elsewhere on the page pre-select the inquiry type.
+  // Links elsewhere on the page pre-select the inquiry type, and the exact service.
   $$("[data-inquiry]").forEach((link) => link.addEventListener("click", () => {
     const radio = $(`input[name="inquiry"][value="${link.dataset.inquiry}"]`, form);
     if (radio) { radio.checked = true; applyType(); }
+    const select = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
+    if (select) select.value = link.dataset.service || "";
+    saveDraft();
   }));
+
+  // Phone becomes required when the customer asks for a call or text.
+  const phone = $("#f-phone");
+  const replyVia = () => form.elements.reply_via.value || "Email";
+  function applyReplyVia() {
+    const needPhone = replyVia() !== "Email";
+    phone.required = needPhone;
+    $("[data-phone-opt]").hidden = needPhone;
+    if (!needPhone) clearError(phone);
+  }
+  $$('input[name="reply_via"]', form).forEach((r) => r.addEventListener("change", applyReplyVia));
+  applyReplyVia();
+
+  /* Draft: keep what the customer typed if the page reloads or they switch apps. */
+  const DRAFT_KEY = "mbw-form-draft";
+  const DRAFT_FIELDS = ["inquiry", "reply_via", "service_requested", "name", "email", "phone", "bike", "part", "suspension_model", "preferred_dropoff", "message"];
+  let draftTimer;
+  function saveDraft() {
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(() => {
+      const draft = {};
+      DRAFT_FIELDS.forEach((n) => {
+        const el = form.elements[n];
+        if (!el) return;
+        if (n === "service_requested") {
+          const visible = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
+          if (visible && visible.value) draft[n] = visible.value;
+        } else if (el.value) draft[n] = el.value;
+      });
+      try { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch {}
+    }, 300);
+  }
+  function clearDraft() {
+    clearTimeout(draftTimer);
+    try { localStorage.removeItem(DRAFT_KEY); } catch {}
+  }
+  function restoreDraft() {
+    let draft;
+    try { draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null"); } catch { return; }
+    if (!draft) return;
+    ["inquiry", "reply_via"].forEach((n) => {
+      const radio = draft[n] && $(`input[name="${n}"][value="${CSS.escape(draft[n])}"]`, form);
+      if (radio) radio.checked = true;
+    });
+    applyType();
+    applyReplyVia();
+    DRAFT_FIELDS.forEach((n) => {
+      if (n === "inquiry" || n === "reply_via" || !draft[n]) return;
+      if (n === "service_requested") {
+        const visible = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
+        if (visible) visible.value = draft[n];
+        return;
+      }
+      const el = form.elements[n];
+      if (el && !el.disabled) el.value = draft[n];
+    });
+  }
+  restoreDraft();
+  form.addEventListener("input", saveDraft);
+  form.addEventListener("change", saveDraft);
 
   function setError(input, text) {
     const field = input.closest(".field");
@@ -154,6 +217,7 @@
         problem = input.id === "f-name" ? "Please enter your name."
           : input.id === "f-email" ? "Please enter your email so we can reply."
           : input.id === "f-part" ? "Tell us which part you're after."
+          : input.id === "f-phone" ? `Add a phone number so we can ${replyVia().toLowerCase()} you.`
           : "Please add a few details.";
       } else if (input.type === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
         problem = "That email doesn't look right.";
@@ -198,12 +262,14 @@
       const json = await res.json().catch(() => ({}));
       if (!res.ok || json.success === false) throw new Error(json.message || "Request failed");
 
-      $("[data-done-email]").textContent = data.email;
+      $("[data-done-msg]").textContent = doneMessage(data);
+      clearDraft();
       form.hidden = true;
       done.hidden = false;
       done.focus();
       form.reset();
       applyType();
+      applyReplyVia();
     } catch {
       note.textContent = "Something went wrong sending your message. Please try again or call 401-218-0029.";
       note.classList.add("is-error");
@@ -212,6 +278,28 @@
       $(".btn-label", submitBtn).textContent = "Send message";
     }
   });
+
+  // Tell the customer when to actually expect a reply, based on shop hours.
+  function nextReply() {
+    const { day, mins } = shopNow();
+    const today = HOURS[day];
+    if (today && mins < today[1] * 60 - 30) return { when: "today", closed: mins < today[0] * 60 };
+    for (let i = 1; i <= 7; i++) {
+      const d = (day + i) % 7;
+      if (HOURS[d]) return { when: i === 1 ? "tomorrow" : `on ${DAYS[d]}`, closed: true };
+    }
+    return { when: "soon", closed: true };
+  }
+
+  function doneMessage(data) {
+    const how = data.reply_via === "Call" ? `call you at ${data.phone}`
+      : data.reply_via === "Text" ? `text you at ${data.phone}`
+      : `email you at ${data.email}`;
+    const { when, closed } = nextReply();
+    if (when === "today" && !closed) return `Thanks, ${data.name}. We'll ${how} later today.`;
+    if (when === "today") return `Thanks, ${data.name}. We'll ${how} once the shop opens today.`;
+    return `Thanks, ${data.name}. The shop is closed right now, so we'll ${how} ${when}.`;
+  }
 
   $("[data-reset]").addEventListener("click", () => {
     done.hidden = true;

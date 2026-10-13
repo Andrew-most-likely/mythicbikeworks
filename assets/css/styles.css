@@ -2,6 +2,16 @@
    Palette is pulled from the shop itself: the black-and-white logo,
    bare steel, and anodized red parts on the bench. One accent, used sparingly. */
 
+/* Archivo, self-hosted (SIL Open Font License, see assets/fonts/OFL.txt). */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 900;
+  font-stretch: 100% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo-latin.woff2") format("woff2");
+}
+
 :root {
   --ink: #111311;
   --ink-2: #1b1d1a;
@@ -287,6 +297,17 @@ ul { margin: 0; padding: 0; list-style: none; }
 .site-footer a:hover { color: #fff; }
 .copy { margin-left: auto; font-size: .85rem; }
 @media (max-width: 640px) { .copy { margin-left: 0; width: 100%; } }
+
+/* Per-row request links */
+.row-link { display: inline-block; margin-top: 10px; font-weight: 700; font-size: .92rem; text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.row-link:hover { color: var(--red); }
+.section-dark .row-link { text-decoration-color: var(--red-on-dark); }
+.section-dark .row-link:hover { color: var(--red-on-dark); }
+.items + .row-link { margin-top: 12px; }
+
+/* Reply preference */
+.reply-via { border: 0; margin: 0; padding: 0; min-width: 0; }
+.reply-via legend { padding: 0; margin-bottom: 10px; font-weight: 600; font-size: .95rem; color: #fff; }
 
 /* Phone quick-action bar */
 .quickbar { display: none; }

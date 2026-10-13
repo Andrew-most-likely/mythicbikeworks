@@ -17,10 +17,7 @@
 
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="assets/img/hero-2400.webp" imagesrcset="assets/img/hero-1200.webp 1200w, assets/img/hero-2400.webp 2400w" imagesizes="100vw">
   <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -98,7 +95,7 @@
         <h1>Your bike,<br>dialed in.</h1>
         <p class="lede">Full-service bike shop on the South County Bike Path. Suspension, hand-built wheels, custom builds and repairs for every kind of rider.</p>
         <div class="hero-actions">
-          <a class="btn btn-accent btn-lg" href="#contact" data-inquiry="service">Book a service</a>
+          <a class="btn btn-accent btn-lg" href="#contact" data-inquiry="service">Request service</a>
           <a class="btn btn-outline-light btn-lg" href="#contact" data-inquiry="part">Ask about a part</a>
         </div>
         <p class="status" data-status aria-live="polite">1207 Kingstown Rd · Open Mon, Thu–Sat</p>
@@ -120,30 +117,37 @@
             <li class="menu-row">
               <div class="menu-name"><h3>Tune-up</h3><p class="price">$75</p></div>
               <p>Top-to-bottom inspection. Shifting and brakes adjusted, wheels trued, bolts and bearings adjusted. Worn chain, pads, tubes or sealant replaced as needed. Written condition report.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Tune-up">Request<span class="sr"> Tune-up</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Disc brake service</h3><p class="price">$25 <small>per brake</small></p></div>
               <p>Hydraulic bleed, pistons, pads and rotors cleaned. Rotors straightened and pads replaced as needed.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Disc brake service">Request<span class="sr"> Disc brake service</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Tubeless setup</h3><p class="price">$30 <small>per wheel</small></p></div>
               <p>Rim tape, valve core and sealant. Parts included.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Tubeless setup">Request<span class="sr"> Tubeless setup</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Wheel true &amp; tension</h3><p class="price">$30 <small>each</small></p></div>
               <p>Wheel trued and spoke tension set. Damaged spokes and nipples replaced.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Wheel true &amp; tension">Request<span class="sr"> Wheel true &amp; tension</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Hub bearings</h3><p class="price">$30 <small>each</small></p></div>
               <p>Cartridge bearings replaced in the hub and freehub, or loose-ball hubs repacked and adjusted.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Hub bearings">Request<span class="sr"> Hub bearings</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Assembly, pack &amp; ship</h3><p class="price">$75</p></div>
               <p>Bought a bike online? We assemble and adjust it. Selling or traveling? We pack and ship it. $120 round trip with reassembly.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Assembly, pack &amp; ship">Request<span class="sr"> Assembly, pack &amp; ship</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Repairs &amp; installs</h3><p class="price price-q">Quoted</p></div>
               <p>Dropper posts, power meters, creaks, grinding drivetrains. We find the problem and fix it.</p>
+              <a class="row-link" href="#contact" data-inquiry="service" data-service="Repairs &amp; installs">Request<span class="sr"> Repairs &amp; installs</span></a>
             </li>
           </ul>
           <p class="fine">Prices are labor. Parts extra.</p>
@@ -169,6 +173,7 @@
                 <li>Fork lower seals and oil replaced</li>
                 <li>Rear shock air can seals and oil replaced</li>
               </ul>
+              <a class="row-link" href="#contact" data-inquiry="suspension" data-service="Basic service">Request<span class="sr"> Basic service</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Full overhaul <span class="interval">200 hr</span></h3><p class="price">$140 <small>each</small></p></div>
@@ -178,6 +183,7 @@
                 <li>Shock eye bushings replaced</li>
                 <li>Knobs, levers and dials replaced as needed</li>
               </ul>
+              <a class="row-link" href="#contact" data-inquiry="suspension" data-service="Full overhaul">Request<span class="sr"> Full overhaul</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Linkage bearings</h3><p class="price price-q">Quoted</p></div>
@@ -185,10 +191,11 @@
                 <li>Pivot bearings inspected and replaced</li>
                 <li>Pivot hardware torqued to spec</li>
               </ul>
+              <a class="row-link" href="#contact" data-inquiry="suspension" data-service="Linkage bearings">Request<span class="sr"> Linkage bearings</span></a>
             </li>
           </ul>
           <p class="fine">Prices are labor. Parts extra.</p>
-          <a class="btn btn-accent" href="#contact" data-inquiry="suspension">Book suspension service</a>
+          <a class="btn btn-accent" href="#contact" data-inquiry="suspension">Request suspension service</a>
         </div>
       </div>
     </section>
@@ -292,7 +299,7 @@
         <div class="col-intro">
           <p class="kicker">Contact</p>
           <h2>Get in touch</h2>
-          <p class="sub">Looking for a part, booking service or planning a build? Send a note and we'll reply by email, usually within one business day.</p>
+          <p class="sub">Looking for a part, booking service or planning a build? Send a note and we'll get back to you by email, phone or text, usually within one business day.</p>
           <p class="sub">Faster: call <a href="tel:+14012180029">401-218-0029</a> or stop by during open hours.</p>
         </div>
 
@@ -315,6 +322,30 @@
               </div>
             </fieldset>
 
+            <div class="field" data-show="service">
+              <label for="f-service">Which service?</label>
+              <select id="f-service" name="service_requested">
+                <option value="">Not sure yet</option>
+                <option>Tune-up</option>
+                <option>Disc brake service</option>
+                <option>Tubeless setup</option>
+                <option>Wheel true &amp; tension</option>
+                <option>Hub bearings</option>
+                <option>Assembly, pack &amp; ship</option>
+                <option>Repairs &amp; installs</option>
+              </select>
+            </div>
+
+            <div class="field" data-show="suspension">
+              <label for="f-susp-service">Which service?</label>
+              <select id="f-susp-service" name="service_requested">
+                <option value="">Not sure yet</option>
+                <option>Basic service</option>
+                <option>Full overhaul</option>
+                <option>Linkage bearings</option>
+              </select>
+            </div>
+
             <div class="grid-2">
               <div class="field">
                 <label for="f-name">Name</label>
@@ -328,9 +359,19 @@
               </div>
             </div>
 
+            <fieldset class="segmented reply-via">
+              <legend>Best way to reply</legend>
+              <div class="seg-options">
+                <label><input type="radio" name="reply_via" value="Email" checked><span>Email</span></label>
+                <label><input type="radio" name="reply_via" value="Call"><span>Call</span></label>
+                <label><input type="radio" name="reply_via" value="Text"><span>Text</span></label>
+              </div>
+            </fieldset>
+
             <div class="field">
-              <label for="f-phone">Phone <span class="opt">optional</span></label>
+              <label for="f-phone">Phone <span class="opt" data-phone-opt>optional</span></label>
               <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+              <p class="err" id="f-phone-err"></p>
             </div>
 
             <div class="field" data-show="part service suspension build">
@@ -373,7 +414,7 @@
 
           <div class="form-done" data-done hidden tabindex="-1">
             <h3>Message sent.</h3>
-            <p>Thanks. We'll reply to <strong data-done-email>your email</strong>, usually within one business day.</p>
+            <p data-done-msg>Thanks. We'll be in touch soon.</p>
             <button class="btn btn-outline-light" type="button" data-reset>Send another</button>
           </div>
         </div>
