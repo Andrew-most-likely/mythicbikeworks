@@ -137,7 +137,7 @@ footer.bottom { padding: 28px 0 60px; color: var(--muted); font-size: .85rem; }
     <div class="pages">
       <article class="page-card">
         <div class="pc-head">
-          <div><h3>Home</h3><p>Local search: bike shop and repair in Wakefield, Peace Dale and South County. Services, Cane Creek bar, suspension, wheels and builds, reviews, hours, contact form.</p></div>
+          <div><h3>Home</h3><p>Overview: hero, Cane Creek bar, mail-in band, service cards linking to each page, reviews, hours.</p></div>
           <div class="pc-links">
             <a href="../" target="_blank" rel="noopener">Open live</a>
           </div>
@@ -154,7 +154,41 @@ footer.bottom { padding: 28px 0 60px; color: var(--muted); font-size: .85rem; }
 
       <article class="page-card">
         <div class="pc-head">
-          <div><h3>Cane Creek service center</h3><p>East Coast and nationwide searches for Cane Creek service: Helm, Kitsuma, DB Air, DB Coil. Mail-in steps and FAQ.</p></div>
+          <div><h3>Service &amp; repair</h3><p>Local repair searches. Full price list with a Request link on every service, FAQ.</p></div>
+          <div class="pc-links">
+            <a href="../service/" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Service &amp; repair">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../service/" title="Service &amp; repair preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Suspension &amp; mail-in</h3><p>Mail-in fork and shock service for every brand across the Northeast. Pricing, mail-in steps, FAQ.</p></div>
+          <div class="pc-links">
+            <a href="../suspension-service/" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Suspension &amp; mail-in">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../suspension-service/" title="Suspension &amp; mail-in preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Cane Creek service center</h3><p>East Coast and nationwide searches for Cane Creek service: Helm, Kitsuma, DB Air, DB Coil.</p></div>
           <div class="pc-links">
             <a href="../cane-creek-service-center/" target="_blank" rel="noopener">Open live</a>
           </div>
@@ -171,18 +205,35 @@ footer.bottom { padding: 28px 0 60px; color: var(--muted); font-size: .85rem; }
 
       <article class="page-card">
         <div class="pc-head">
-          <div><h3>Suspension service</h3><p>Mail-in fork and shock service for every brand across the Northeast. Pricing, warning signs, mail-in steps and FAQ.</p></div>
+          <div><h3>Wheels &amp; builds</h3><p>Hand-built wheelsets, custom builds, brands, special orders, FAQ.</p></div>
           <div class="pc-links">
-            <a href="../suspension-service/" target="_blank" rel="noopener">Open live</a>
+            <a href="../wheels-and-builds/" target="_blank" rel="noopener">Open live</a>
           </div>
         </div>
-        <div class="toggle" role="group" aria-label="Preview size for Suspension service">
+        <div class="toggle" role="group" aria-label="Preview size for Wheels &amp; builds">
           <button type="button" class="on" data-size="desktop">Laptop</button>
           <button type="button" data-size="tablet">Tablet</button>
           <button type="button" data-size="phone">Phone</button>
         </div>
         <div class="frame-wrap desktop" data-wrap>
-          <iframe src="../suspension-service/" title="Suspension service preview" loading="lazy" tabindex="-1"></iframe>
+          <iframe src="../wheels-and-builds/" title="Wheels &amp; builds preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Contact</h3><p>Full-page form; also where Contact links go without JavaScript. Every other page opens the form in a slide-in panel.</p></div>
+          <div class="pc-links">
+            <a href="../contact/" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Contact">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../contact/" title="Contact preview" loading="lazy" tabindex="-1"></iframe>
         </div>
       </article>
 
@@ -245,7 +296,7 @@ footer.bottom { padding: 28px 0 60px; color: var(--muted); font-size: .85rem; }
 <li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Typical turnaround for tune-ups and suspension"><span>Typical turnaround for tune-ups and suspension</span></label></li>
 <li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Drop-off on closed days?"><span>Drop-off on closed days?</span></label></li>
 <li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Mail-in details: shipping address, packing rules, return shipping cost"><span>Mail-in details: shipping address, packing rules, return shipping cost</span></label></li></ul></div>
-<div class="act-group"><h3>Setup (Andrew) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Setup (Andrew)::Web3Forms key in index.html (form does not send email until then)"><span>Web3Forms key in index.html (form does not send email until then)</span></label></li>
+<div class="act-group"><h3>Setup (Andrew) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Setup (Andrew)::Web3Forms key in src/partials/form.html, then rebuild (form does not send email until then)"><span>Web3Forms key in src/partials/form.html, then rebuild (form does not send email until then)</span></label></li>
 <li><label><input type="checkbox" data-key="Setup (Andrew)::Claim and update Google Business Profile"><span>Claim and update Google Business Profile</span></label></li>
 <li><label><input type="checkbox" data-key="Setup (Andrew)::Move hosting to Cloudflare Pages"><span>Move hosting to Cloudflare Pages</span></label></li>
 <li><label><input type="checkbox" data-key="Setup (Andrew)::Transfer mythicbikeworks.com off Wix (check shop email records first)"><span>Transfer mythicbikeworks.com off Wix (check shop email records first)</span></label></li>
@@ -364,19 +415,23 @@ footer.bottom { padding: 28px 0 60px; color: var(--muted); font-size: .85rem; }
 <section class="block" id="update">
   <div class="wrap">
     <div class="block-head"><div><h2>Updating the site</h2><p>Edit, commit, push; the live site updates in about a minute.</p></div></div>
-    <table><thead><tr><th>To change</th><th>Edit</th></tr></thead><tbody><tr><td>Text, prices, brands, reviews</td><td><code>index.html</code></td></tr>
-<tr><td>Landing pages</td><td><code>tools/build_pages.py, then run it</code></td></tr>
-<tr><td>Colors, spacing, layout</td><td><code>assets/css/styles.css (then bump ?v=N)</code></td></tr>
-<tr><td>Form, open/closed status</td><td><code>assets/js/main.js (then bump ?v=N)</code></td></tr>
-<tr><td>Hours (3 places)</td><td><code>hours table + business details in index.html, HOURS in main.js</code></td></tr>
+    <table><thead><tr><th>To change</th><th>Edit</th></tr></thead><tbody><tr><td>Text, prices, brands, reviews</td><td><code>src/pages/*.html, then python3 tools/build.py</code></td></tr>
+<tr><td>Header, footer, form, hours</td><td><code>src/partials/*.html, then rebuild</code></td></tr>
+<tr><td>Colors, spacing, layout</td><td><code>assets/css/styles.css (bump VERSION in tools/build.py)</code></td></tr>
+<tr><td>Form, panel, open/closed status</td><td><code>assets/js/main.js (bump VERSION)</code></td></tr>
+<tr><td>Hours</td><td><code>src/partials/hours.html, src/data/business.json, HOURS in main.js</code></td></tr>
 <tr><td>Photos</td><td><code>assets/img/ as .webp, plus a -600 size</code></td></tr></tbody></table>
   </div>
 </section>
 
 <section class="block" id="history">
   <div class="wrap">
-    <div class="block-head"><div><h2>History</h2><p>14 commits. Re-run <code>python3 ~/Documents/mythicbikeworks-hub/build_hub.py</code> to refresh.</p></div></div>
-    <table><thead><tr><th>Commit</th><th>When</th><th>Change</th></tr></thead><tbody><tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/936caec" target="_blank" rel="noopener"><code>936caec</code></a></td><td>Oct 13, 20:06</td><td>Add project hub at /hub/ (hidden from search)</td></tr>
+    <div class="block-head"><div><h2>History</h2><p>18 commits. Re-run <code>python3 ~/Documents/mythicbikeworks-hub/build_hub.py</code> to refresh.</p></div></div>
+    <table><thead><tr><th>Commit</th><th>When</th><th>Change</th></tr></thead><tbody><tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/59e6e08" target="_blank" rel="noopener"><code>59e6e08</code></a></td><td>Oct 13, 20:38</td><td>Split the site into service pages with a slide-in contact form</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/58ac10d" target="_blank" rel="noopener"><code>58ac10d</code></a></td><td>Oct 13, 20:23</td><td>Make mail-in service obvious on the home page</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/7b27170" target="_blank" rel="noopener"><code>7b27170</code></a></td><td>Oct 13, 20:17</td><td>Match native controls and autofill to the dark sections</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/369d351" target="_blank" rel="noopener"><code>369d351</code></a></td><td>Oct 13, 20:06</td><td>Remove the private notes link from the published hub</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/936caec" target="_blank" rel="noopener"><code>936caec</code></a></td><td>Oct 13, 20:06</td><td>Add project hub at /hub/ (hidden from search)</td></tr>
 <tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/c99eb13" target="_blank" rel="noopener"><code>c99eb13</code></a></td><td>Oct 13, 20:02</td><td>Add design board at /board/ (hidden from search)</td></tr>
 <tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/079ae29" target="_blank" rel="noopener"><code>079ae29</code></a></td><td>Oct 13, 19:46</td><td>Fix unreadable &#x27;Send another&#x27; button and let the phone menu fill the screen</td></tr>
 <tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/0e978fb" target="_blank" rel="noopener"><code>0e978fb</code></a></td><td>Oct 13, 19:29</td><td>Keep dark sections rendered so contrast checks see their background</td></tr>
