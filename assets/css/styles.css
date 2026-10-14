@@ -19,6 +19,7 @@
 }
 
 :root {
+  color-scheme: light;
   --ink: #111311;
   --ink-2: #1b1d1a;
   --ink-line: #2e312d;
@@ -178,6 +179,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Sections */
 .section { padding: clamp(72px, 9vw, 120px) 0; }
 .section-dark { background: var(--ink); color: #fff; }
+/* Dark areas tell the browser they are dark, so native controls (select lists,
+   scrollbars, spell-check menus) match instead of flashing light. */
+.section-dark, .site-header, .mobile-menu, .site-footer, .simple-page, .quickbar { color-scheme: dark; }
 .section-tint { background: var(--tint); }
 .section-tint .sub a { color: var(--text); font-weight: 600; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .head { margin-bottom: clamp(32px, 4vw, 48px); }
@@ -288,6 +292,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 42px;
 }
 .field ::placeholder { color: #8f938b; }
+/* Keep browser autofill from painting a light box inside the dark form. */
+.field input:-webkit-autofill, .field input:-webkit-autofill:hover, .field input:-webkit-autofill:focus, .field textarea:-webkit-autofill {
+  -webkit-text-fill-color: #fff; caret-color: #fff;
+  -webkit-box-shadow: 0 0 0 1000px var(--ink-2) inset; box-shadow: 0 0 0 1000px var(--ink-2) inset;
+  transition: background-color 9999s ease-out 0s;
+}
+.field input:autofill { background: var(--ink-2); color: #fff; }
+.field select option { background: var(--ink-2); color: #fff; }
 .field input:hover, .field select:hover, .field textarea:hover { border-color: #9a9e97; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: #fff; }
 .field.has-error input, .field.has-error textarea { border-color: var(--red-on-dark); }

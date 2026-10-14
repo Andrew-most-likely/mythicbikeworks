@@ -62,7 +62,7 @@ def page(slug, title, desc, crumb, body, service, faqs):
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=7">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=8">
   <script type="application/ld+json">
 {json.dumps(ld, indent=2, ensure_ascii=False)}
   </script>
@@ -104,7 +104,7 @@ def page(slug, title, desc, crumb, body, service, faqs):
 
   {up(quick)}
 
-  <script src="../assets/js/main.js?v=7" defer></script>
+  <script src="../assets/js/main.js?v=8" defer></script>
 </body>
 </html>
 '''
