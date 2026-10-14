@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'inline-speculation-rules' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com; form-action https://api.web3forms.com; base-uri 'self'; object-src 'none'">
   <title>Cane Creek Suspension Service Center, East Coast | Mythic Bike Works</title>
   <meta name="description" content="The only Cane Creek suspension service center on the East Coast. Helm, Kitsuma and DB shock service. Drop off in Peace Dale, RI or mail it in.">
   <meta name="theme-color" content="#111311">
@@ -16,7 +17,8 @@
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=9">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=10">
+  <script type="speculationrules">{"prefetch": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[target=_blank], [href*='/board/'], [href*='/hub/']"}}]}, "eagerness": "eager"}], "prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[target=_blank], [href*='/board/'], [href*='/hub/']"}}]}, "eagerness": "moderate"}]}</script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,27 +39,9 @@
       }
     },
     {
+      "@type": "Service",
       "name": "Cane Creek suspension service",
       "serviceType": "Bicycle suspension service",
-      "brand": {
-        "@type": "Brand",
-        "name": "Cane Creek"
-      },
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Basic service",
-          "price": "50",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "name": "Full overhaul",
-          "price": "140",
-          "priceCurrency": "USD"
-        }
-      ],
-      "@type": "Service",
       "provider": {
         "@id": "https://mythicbikeworks.com/#shop"
       },
@@ -103,7 +87,25 @@
           "@type": "Country",
           "name": "United States"
         }
-      ]
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Basic service",
+          "price": "50",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Full overhaul",
+          "price": "140",
+          "priceCurrency": "USD"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Cane Creek"
+      }
     },
     {
       "@type": "FAQPage",
@@ -182,54 +184,52 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <svg class="sprite" width="0" height="0" aria-hidden="true">
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   </svg>
 
   <header class="site-header" data-header>
     <div class="wrap header-inner">
-      <a class="brand" href="../" aria-label="Mythic Bike Works, home">
+      <a class="brand" href=".././" aria-label="Mythic Bike Works, home">
         <img src="../assets/img/logo-wordmark-220.webp" srcset="../assets/img/logo-wordmark-220.webp 220w, ../assets/img/logo-wordmark-440.webp 440w" sizes="100px" alt="Mythic Bike Works" width="734" height="322">
       </a>
       <nav class="nav" aria-label="Main">
         <ul>
-          <li><a href="../#service">Service</a></li>
-          <li><a href="../#suspension">Suspension</a></li>
-          <li><a href="../suspension-service/">Mail-in</a></li>
-          <li><a href="../cane-creek-service-center/">Cane Creek</a></li>
-          <li><a href="../#wheels">Wheels &amp; builds</a></li>
-          <li><a href="../#visit">Hours</a></li>
-          <li><a href="../#contact">Contact</a></li>
+          <li><a href="../service/">Service</a></li>
+          <li><a href="../suspension-service/">Suspension &amp; mail-in</a></li>
+          <li><a href="../cane-creek-service-center/" aria-current="page">Cane Creek</a></li>
+          <li><a href="../wheels-and-builds/">Wheels &amp; builds</a></li>
+          <li><a href=".././#visit">Hours</a></li>
         </ul>
       </nav>
       <a class="header-phone" href="tel:+14012180029">401-218-0029</a>
+      <a class="btn btn-sm btn-accent header-contact" href="../contact/" data-open-contact>Contact</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-btn>
         <svg class="ico"><use href="#i-menu"/></svg><span class="sr">Menu</span>
       </button>
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden data-menu>
       <ul>
-        <li><a href="../#service">Service</a></li>
-        <li><a href="../#suspension">Suspension</a></li>
-        <li><a href="../suspension-service/">Mail-in suspension service</a></li>
+        <li><a href=".././">Home</a></li>
+        <li><a href="../service/">Service &amp; repair</a></li>
+        <li><a href="../suspension-service/">Suspension &amp; mail-in</a></li>
         <li><a href="../cane-creek-service-center/">Cane Creek service center</a></li>
-        <li><a href="../#wheels">Wheels &amp; builds</a></li>
-        <li><a href="../#visit">Hours &amp; location</a></li>
-        <li><a href="../#contact">Contact</a></li>
+        <li><a href="../wheels-and-builds/">Wheels &amp; builds</a></li>
+        <li><a href=".././#visit">Hours &amp; location</a></li>
+        <li><a href="../contact/" data-open-contact>Contact</a></li>
       </ul>
       <a class="btn btn-accent btn-block" href="tel:+14012180029">Call 401-218-0029</a>
     </div>
   </header>
-
   <main id="main">
-    <section class="page-hero">
+<section class="page-hero">
       <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> <span>/</span> <span aria-current="page">Cane Creek service center</span></nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href=".././">Home</a> <span>/</span> <span aria-current="page">Cane Creek service center</span></nav>
         <h1>Cane Creek suspension service center</h1>
         <p class="lede">The only Cane Creek suspension service center on the East Coast, and one of 9 Cane Creek VIP dealers in the U.S. Drop off in Peace Dale, RI, or ship your fork or shock to us from anywhere.</p>
         <div class="hero-actions">
-          <a class="btn btn-accent btn-lg" href="../?inquiry=suspension&amp;dropoff=Shipping%20it%20in#contact">Start a Cane Creek service</a>
+          <a class="btn btn-accent btn-lg" href="../contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in" data-inquiry="suspension" data-dropoff="Shipping it in">Start a Cane Creek service</a>
           <a class="btn btn-outline-light btn-lg" href="tel:+14012180029">Call 401-218-0029</a>
         </div>
       </div>
@@ -244,7 +244,7 @@
         <div class="prose">
           <p>Cane Creek has limited service at its own factory to warranty work and sends riders to its certified service centers (<a href="https://canecreek.com/suspension-service/" target="_blank" rel="noopener">Cane Creek</a>). On the East Coast, that service center is us.</p>
           <p>We service Cane Creek forks and shocks in-house, including the <strong>Helm</strong> fork and the <strong>Kitsuma</strong>, <strong>DB Air</strong> and <strong>DB Coil</strong> shocks. Not sure what you have? Send us the model name printed on it and we'll tell you.</p>
-          <p>As a Cane Creek VIP dealer we can also order Cane Creek parts and upgrades. <a href="../?inquiry=part#contact">Ask about a part</a>.</p>
+          <p>As a Cane Creek VIP dealer we can also order Cane Creek parts and upgrades. <a href="../contact/?inquiry=part" data-inquiry="part">Ask about a part</a>.</p>
           <p>Riding another brand? We service <a href="../suspension-service/">forks and shocks from every major brand</a>.</p>
         </div>
       </div>
@@ -262,14 +262,17 @@
             <li class="menu-row">
               <div class="menu-name"><h3>Basic service <span class="interval">50 hr</span></h3><p class="price">$50 <small>per fork or shock</small></p></div>
               <ul class="items"><li>Fork lower seals and oil replaced</li><li>Rear shock air can seals and oil replaced</li></ul>
+              <a class="row-link" href="../contact/?inquiry=suspension&amp;service=Basic%20service" data-inquiry="suspension" data-service="Basic service">Request<span class="sr"> basic service</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Full overhaul <span class="interval">200 hr</span></h3><p class="price">$140 <small>each</small></p></div>
               <ul class="items"><li>Lower, damper and air spring seals replaced</li><li>Damper fluid replaced</li><li>Shock eye bushings replaced</li><li>Knobs, levers and dials replaced as needed</li></ul>
+              <a class="row-link" href="../contact/?inquiry=suspension&amp;service=Full%20overhaul" data-inquiry="suspension" data-service="Full overhaul">Request<span class="sr"> full overhaul</span></a>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Linkage bearings</h3><p class="price price-q">Quoted</p></div>
               <ul class="items"><li>Pivot bearings inspected and replaced</li><li>Pivot hardware torqued to spec</li></ul>
+              <a class="row-link" href="../contact/?inquiry=suspension&amp;service=Linkage%20bearings" data-inquiry="suspension" data-service="Linkage bearings">Request<span class="sr"> linkage bearings</span></a>
             </li>
           </ul>
           <p class="fine">Prices are labor. Parts extra. We confirm the quote before any work starts.</p>
@@ -291,11 +294,10 @@
             <li><h3>Ship it to Peace Dale, RI</h3><p>Send just the fork or shock unless we ask for more.</p></li>
             <li><h3>Serviced and shipped back</h3><p>We do the work in-house and send it home, ready to bolt on.</p></li>
           </ol>
-          <a class="btn btn-dark" href="../?inquiry=suspension&amp;dropoff=Shipping%20it%20in#contact">Start a mail-in service</a>
+          <a class="btn btn-dark" href="../contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in" data-inquiry="suspension" data-dropoff="Shipping it in">Start a mail-in service</a>
         </div>
       </div>
     </section>
-
     <section class="section" aria-labelledby="faq-title">
       <div class="wrap two-col">
         <div class="col-intro">
@@ -313,7 +315,7 @@
           </details>
           <details class="faq-item">
             <summary>Can I mail my Cane Creek shock or fork to you?</summary>
-            <p>Yes. <a href="../?inquiry=suspension&amp;dropoff=Shipping%20it%20in#contact">Send us a message</a> first and we'll reply with a quote and shipping instructions.</p>
+            <p>Yes. <a href="../contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in" data-inquiry="suspension" data-dropoff="Shipping it in">Send us a message</a> first and we'll reply with a quote and shipping instructions.</p>
           </details>
           <details class="faq-item">
             <summary>How long does service take?</summary>
@@ -337,7 +339,7 @@
           <h2>Ready when you are.</h2>
           <p>Send a message or call <a href="tel:+14012180029">401-218-0029</a>. Open Mon, Thu–Sat at 1207 Kingstown Rd, Peace Dale, RI.</p>
         </div>
-        <a class="btn btn-accent btn-lg" href="../?inquiry=suspension&amp;dropoff=Shipping%20it%20in#contact">Start a request</a>
+        <a class="btn btn-dark btn-lg" href="../contact/" data-open-contact>Send a message</a>
       </div>
     </section>
   </main>
@@ -347,6 +349,13 @@
       <img class="footer-logo" src="../assets/img/mbw-gear-96.webp" alt="" width="240" height="240" loading="lazy">
       <p><strong>Mythic Bike Works</strong><br>1207 Kingstown Rd, Peace Dale, RI 02879</p>
       <p><a href="tel:+14012180029">401-218-0029</a><br><a href="https://www.instagram.com/mythicbikeworks/" target="_blank" rel="noopener">Instagram</a></p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="../service/">Service</a>
+        <a href="../suspension-service/">Suspension &amp; mail-in</a>
+        <a href="../cane-creek-service-center/">Cane Creek</a>
+        <a href="../wheels-and-builds/">Wheels &amp; builds</a>
+        <a href="../contact/" data-open-contact>Contact</a>
+      </nav>
       <p class="copy">© <span data-year>2026</span> Mythic Bike Works</p>
     </div>
   </footer>
@@ -354,9 +363,136 @@
   <nav class="quickbar" aria-label="Quick actions" data-quickbar>
     <a href="tel:+14012180029">Call</a>
     <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Mythic+Bike+Works,+1207+Kingstown+Rd,+Peace+Dale,+RI+02879" target="_blank" rel="noopener">Directions</a>
-    <a href="../#contact" class="quickbar-accent">Message</a>
+    <a href="../contact/" class="quickbar-accent" data-open-contact>Message</a>
   </nav>
 
-  <script src="../assets/js/main.js?v=9" defer></script>
+  <dialog class="drawer" aria-labelledby="drawer-title" data-drawer>
+    <div class="drawer-head">
+      <h2 id="drawer-title">Get in touch</h2>
+      <button class="drawer-close" type="button" data-close-drawer>
+        <svg class="ico"><use href="#i-close"/></svg><span class="sr">Close</span>
+      </button>
+    </div>
+    <p class="drawer-sub">We reply by email, phone or text, usually within one business day. Faster: call <a href="tel:+14012180029">401-218-0029</a>.</p>
+    <div class="drawer-body">
+          <form class="form" action="https://api.web3forms.com/submit" method="POST" novalidate data-form>
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New website inquiry">
+            <input type="hidden" name="from_name" value="mythicbikeworks.com">
+            <input type="hidden" name="redirect" value="https://mythicbikeworks.com/thanks.html">
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <fieldset class="segmented">
+              <legend>What can we help with?</legend>
+              <div class="seg-options">
+                <label><input type="radio" name="inquiry" value="part" checked><span>Part inquiry</span></label>
+                <label><input type="radio" name="inquiry" value="service"><span>Service</span></label>
+                <label><input type="radio" name="inquiry" value="suspension"><span>Suspension</span></label>
+                <label><input type="radio" name="inquiry" value="build"><span>Custom build</span></label>
+                <label><input type="radio" name="inquiry" value="other"><span>Other</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field" data-show="service">
+              <label for="f-service">Which service?</label>
+              <select id="f-service" name="service_requested">
+                <option value="">Not sure yet</option>
+                <option>Tune-up</option>
+                <option>Disc brake service</option>
+                <option>Tubeless setup</option>
+                <option>Wheel true &amp; tension</option>
+                <option>Hub bearings</option>
+                <option>Assembly, pack &amp; ship</option>
+                <option>Repairs &amp; installs</option>
+              </select>
+            </div>
+
+            <div class="field" data-show="suspension">
+              <label for="f-susp-service">Which service?</label>
+              <select id="f-susp-service" name="service_requested">
+                <option value="">Not sure yet</option>
+                <option>Basic service</option>
+                <option>Full overhaul</option>
+                <option>Linkage bearings</option>
+              </select>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label for="f-name">Name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+                <p class="err" id="f-name-err"></p>
+              </div>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                <p class="err" id="f-email-err"></p>
+              </div>
+            </div>
+
+            <fieldset class="segmented reply-via">
+              <legend>Best way to reply</legend>
+              <div class="seg-options">
+                <label><input type="radio" name="reply_via" value="Email" checked><span>Email</span></label>
+                <label><input type="radio" name="reply_via" value="Call"><span>Call</span></label>
+                <label><input type="radio" name="reply_via" value="Text"><span>Text</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="f-phone">Phone <span class="opt" data-phone-opt>optional</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+              <p class="err" id="f-phone-err"></p>
+            </div>
+
+            <div class="field" data-show="part service suspension build">
+              <label for="f-bike">Your bike <span class="opt">make, model, year</span></label>
+              <input id="f-bike" name="bike" type="text" placeholder="e.g. Transition Sentinel 2022">
+            </div>
+
+            <div class="field" data-show="part">
+              <label for="f-part">Part you're looking for</label>
+              <input id="f-part" name="part" type="text" placeholder="Name, size or part #">
+            </div>
+
+            <div class="field" data-show="suspension">
+              <label for="f-susp">Fork / shock model</label>
+              <input id="f-susp" name="suspension_model" type="text" placeholder="e.g. Cane Creek Helm MKII, Fox 36, RockShox Super Deluxe">
+            </div>
+
+            <div class="field" data-show="service suspension">
+              <label for="f-when">Drop-off <span class="opt">optional</span></label>
+              <select id="f-when" name="preferred_dropoff">
+                <option value="">No preference</option>
+                <option>Shipping it in</option>
+                <option>Monday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="f-msg" data-msg-label>Details</label>
+              <textarea id="f-msg" name="message" rows="5" required></textarea>
+              <p class="err" id="f-msg-err"></p>
+            </div>
+
+            <button class="btn btn-accent btn-lg btn-block" type="submit" data-submit>
+              <span class="btn-label">Send message</span><span class="spinner" aria-hidden="true"></span>
+            </button>
+            <p class="form-note" data-form-status role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="form-done" data-done hidden tabindex="-1">
+            <h3>Message sent.</h3>
+            <p data-done-msg>Thanks. We'll be in touch soon.</p>
+            <button class="btn btn-outline-light" type="button" data-reset>Send another</button>
+          </div>
+
+    </div>
+  </dialog>
+
+  <script src="../assets/js/main.js?v=10" defer></script>
 </body>
 </html>

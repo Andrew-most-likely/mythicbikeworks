@@ -100,9 +100,31 @@
 
   /* ---------- Misc ---------- */
   $("[data-year]").textContent = new Date().getFullYear();
-  /* ---------- Contact form (home page only) ---------- */
+
+  /* ---------- Prefetch fallback ---------- */
+  // Chrome and Edge preload pages from the speculation rules in <head>. Other browsers
+  // get a plain prefetch of each page in the menu once this page has finished loading.
+  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports("speculationrules"))) {
+    addEventListener("load", () => {
+      const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1500));
+      idle(() => {
+        const seen = new Set();
+        $$(".nav a, .footer-nav a").forEach((a) => {
+          const u = new URL(a.href, location.href);
+          if (u.origin !== location.origin || u.pathname === location.pathname || seen.has(u.pathname)) return;
+          seen.add(u.pathname);
+          const l = document.createElement("link");
+          l.rel = "prefetch"; l.href = u.pathname;
+          document.head.append(l);
+        });
+      });
+    });
+  }
+
+  /* ---------- Contact form (slide-in panel, or inline on the contact page) ---------- */
   const form = $("[data-form]");
   if (!form) return;
+  const drawer = $("[data-drawer]");
   const done = $("[data-done]");
   const note = $("[data-form-status]");
   const submitBtn = $("[data-submit]");
@@ -137,15 +159,49 @@
   $$('input[name="inquiry"]', form).forEach((r) => r.addEventListener("change", applyType));
   applyType();
 
-  // Links elsewhere on the page pre-select the inquiry type, and the exact service.
-  $$("[data-inquiry]").forEach((link) => link.addEventListener("click", () => {
-    const radio = $(`input[name="inquiry"][value="${link.dataset.inquiry}"]`, form);
-    if (radio) { radio.checked = true; applyType(); }
+  // Pre-select the request type, the exact service and drop-off from a link or the URL.
+  function prefill({ inquiry, service, dropoff } = {}) {
+    if (inquiry) {
+      const radio = $(`input[name="inquiry"][value="${CSS.escape(inquiry)}"]`, form);
+      if (radio) { radio.checked = true; applyType(); }
+    }
     const select = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
-    if (select) select.value = link.dataset.service || "";
-    if (link.dataset.dropoff) $("#f-when").value = link.dataset.dropoff;
+    if (select && inquiry) select.value = service || "";
+    if (dropoff) $("#f-when").value = dropoff;
     saveDraft();
-  }));
+  }
+
+  /* Slide-in panel: every Contact / Request link opens the form on top of the page,
+     so nobody gets scrolled away from what they were reading. Without JavaScript the
+     same links go to the contact page. */
+  let opener = null;
+  function openDrawer(trigger) {
+    if (!drawer) return false;
+    opener = trigger || document.activeElement;
+    setMenu(false);
+    if (!done.hidden) { done.hidden = true; form.hidden = false; } // fresh form after a sent message
+    drawer.showModal();
+    document.documentElement.classList.add("drawer-open");
+    return true;
+  }
+  function closeDrawer() { if (drawer && drawer.open) drawer.close(); }
+  if (drawer) {
+    drawer.addEventListener("close", () => {
+      document.documentElement.classList.remove("drawer-open");
+      if (opener && opener.focus) opener.focus();
+    });
+    $("[data-close-drawer]", drawer).addEventListener("click", closeDrawer);
+    // Click on the dimmed backdrop closes the panel.
+    drawer.addEventListener("click", (e) => { if (e.target === drawer) closeDrawer(); });
+  }
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("[data-inquiry], [data-open-contact]");
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (link.dataset.inquiry) prefill({ inquiry: link.dataset.inquiry, service: link.dataset.service, dropoff: link.dataset.dropoff });
+    if (drawer) { e.preventDefault(); openDrawer(link); }
+    else { e.preventDefault(); form.scrollIntoView({ behavior: "smooth", block: "start" }); $("#f-name").focus({ preventScroll: true }); }
+  });
 
   // Phone becomes required when the customer asks for a call or text.
   const phone = $("#f-phone");
@@ -204,16 +260,11 @@
     });
   }
   restoreDraft();
-
-  // Links from other pages pass the request type in the URL.
+  // Links from elsewhere (or old bookmarks) can carry the request in the URL.
   const params = new URLSearchParams(location.search);
-  if (params.get("inquiry")) {
-    const radio = $(`input[name="inquiry"][value="${CSS.escape(params.get("inquiry"))}"]`, form);
-    if (radio) { radio.checked = true; applyType(); }
-    const select = $('[data-show]:not([hidden]) select[name="service_requested"]', form);
-    if (select && params.get("service")) select.value = params.get("service");
-    if (params.get("dropoff")) $("#f-when").value = params.get("dropoff");
-  }
+  if (params.get("inquiry")) prefill({ inquiry: params.get("inquiry"), service: params.get("service"), dropoff: params.get("dropoff") });
+  if (drawer && (params.get("inquiry") || location.hash === "#contact")) openDrawer();
+
   form.addEventListener("input", saveDraft);
   form.addEventListener("change", saveDraft);
 

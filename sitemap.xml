@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mythicbikeworks.com/</loc><lastmod>2026-10-13</lastmod></url>
-  <url><loc>https://mythicbikeworks.com/cane-creek-service-center/</loc><lastmod>2026-10-13</lastmod></url>
-  <url><loc>https://mythicbikeworks.com/suspension-service/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://mythicbikeworks.com/</loc></url>
+  <url><loc>https://mythicbikeworks.com/service/</loc></url>
+  <url><loc>https://mythicbikeworks.com/suspension-service/</loc></url>
+  <url><loc>https://mythicbikeworks.com/cane-creek-service-center/</loc></url>
+  <url><loc>https://mythicbikeworks.com/wheels-and-builds/</loc></url>
+  <url><loc>https://mythicbikeworks.com/contact/</loc></url>
 </urlset>
