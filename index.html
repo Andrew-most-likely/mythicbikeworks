@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'inline-speculation-rules' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com; form-action https://api.web3forms.com; base-uri 'self'; object-src 'none'">
   <title>Bike Shop &amp; Repair in Wakefield, RI | Mythic Bike Works</title>
   <meta name="description" content="Bike shop in Peace Dale, RI and the East Coast&#x27;s only Cane Creek suspension service center. Suspension, wheels, builds and repairs. Mail-in service.">
-  <meta name="theme-color" content="#111311">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://mythicbikeworks.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mythic Bike Works · Bike Shop in Peace Dale &amp; Wakefield, RI">
@@ -17,9 +17,9 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" imagesrcset="assets/img/hero-portrait-700.webp 700w, assets/img/hero-portrait-1100.webp 1100w" imagesizes="110vw" media="(max-width: 640px)" fetchpriority="high">
-  <link rel="preload" as="image" imagesrcset="assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw" media="(min-width: 641px)" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/styles.css?v=11">
+  <link rel="preload" as="image" imagesrcset="assets/img/hero-portrait-700.webp 700w, assets/img/hero-portrait-1100.webp 1100w" imagesizes="100vw" media="(max-width: 640px)" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="(max-width: 900px) 100vw, 60vw" media="(min-width: 641px)" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/styles.css?v=12">
   <script type="speculationrules">{"prefetch": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[target=_blank], [href*='/board/'], [href*='/hub/']"}}]}, "eagerness": "eager"}], "prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[target=_blank], [href*='/board/'], [href*='/hub/']"}}]}, "eagerness": "moderate"}]}</script>
   <script type="application/ld+json">
 {
@@ -180,19 +180,21 @@
   </header>
   <main id="main">
 <section class="hero" id="top">
-      <picture>
-        <source media="(max-width: 640px)" srcset="assets/img/hero-portrait-700.webp 700w, assets/img/hero-portrait-1100.webp 1100w" sizes="110vw" width="1100" height="1790">
-        <img class="hero-img" src="assets/img/hero-1600.webp" srcset="assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw" alt="A rider in the air off a dirt jump in a pine forest" width="2400" height="1719" fetchpriority="high">
-      </picture>
-      <div class="wrap hero-content">
-        <p class="kicker">Bike shop · Peace Dale &amp; Wakefield, RI</p>
-        <h1>Your bike,<br>dialed in.</h1>
-        <p class="lede">Full-service bike shop on the South County Bike Path. Suspension, hand-built wheels, custom builds and repairs for every kind of rider. <a href="suspension-service/">Not local? Mail in your fork or shock.</a></p>
-        <div class="hero-actions">
-          <a class="btn btn-accent btn-lg" href="contact/?inquiry=service" data-inquiry="service">Request service</a>
-          <a class="btn btn-outline-light btn-lg" href="contact/?inquiry=part" data-inquiry="part">Ask about a part</a>
+      <div class="wrap hero-grid">
+        <div class="hero-content">
+          <p class="kicker">Bike shop · Peace Dale &amp; Wakefield, RI</p>
+          <h1>Your bike,<br>dialed in.</h1>
+          <p class="lede">Full-service bike shop on the South County Bike Path. Suspension, hand-built wheels, custom builds and repairs for every kind of rider. <a href="suspension-service/">Not local? Mail in your fork or shock.</a></p>
+          <div class="hero-actions">
+            <a class="btn btn-accent btn-lg" href="contact/?inquiry=service" data-inquiry="service">Request service</a>
+            <a class="btn btn-outline-light btn-lg" href="contact/?inquiry=part" data-inquiry="part">Ask about a part</a>
+          </div>
+          <p class="status" data-status aria-live="polite">1207 Kingstown Rd · Open Mon, Thu–Sat</p>
         </div>
-        <p class="status" data-status aria-live="polite">1207 Kingstown Rd · Open Mon, Thu–Sat</p>
+        <picture class="hero-media">
+          <source media="(max-width: 640px)" srcset="assets/img/hero-portrait-700.webp 700w, assets/img/hero-portrait-1100.webp 1100w" sizes="100vw" width="1100" height="1790">
+          <img class="hero-img" src="assets/img/hero-1600.webp" srcset="assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw" alt="A rider in the air off a dirt jump in a pine forest" width="2400" height="1719" fetchpriority="high">
+        </picture>
       </div>
     </section>
 
@@ -453,6 +455,6 @@
     </div>
   </dialog>
 
-  <script src="assets/js/main.js?v=11" defer></script>
+  <script src="assets/js/main.js?v=12" defer></script>
 </body>
 </html>

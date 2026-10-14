@@ -14,7 +14,7 @@ import re
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT_DIR, "src")
 SITE = "https://mythicbikeworks.com"
-VERSION = "11"  # bump when assets/css/styles.css or assets/js/main.js change
+VERSION = "12"  # bump when assets/css/styles.css or assets/js/main.js change
 
 SOUTH_COUNTY = ["Peace Dale", "Wakefield", "Kingston", "South Kingstown", "Narragansett", "North Kingstown",
                 "Charlestown", "Exeter", "Richmond", "Westerly", "Jamestown", "Newport"]
@@ -140,12 +140,12 @@ def head(meta, url, r):
     preload = ""
     if meta.get("hero_preload"):
         preload = f"""
-  <link rel="preload" as="image" imagesrcset="{r}assets/img/hero-portrait-700.webp 700w, {r}assets/img/hero-portrait-1100.webp 1100w" imagesizes="110vw" media="(max-width: 640px)" fetchpriority="high">
-  <link rel="preload" as="image" imagesrcset="{r}assets/img/hero-1200.webp 1200w, {r}assets/img/hero-1600.webp 1600w, {r}assets/img/hero-2400.webp 2400w" imagesizes="100vw" media="(min-width: 641px)" fetchpriority="high">"""
+  <link rel="preload" as="image" imagesrcset="{r}assets/img/hero-portrait-700.webp 700w, {r}assets/img/hero-portrait-1100.webp 1100w" imagesizes="100vw" media="(max-width: 640px)" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="{r}assets/img/hero-1200.webp 1200w, {r}assets/img/hero-1600.webp 1600w, {r}assets/img/hero-2400.webp 2400w" imagesizes="(max-width: 900px) 100vw, 60vw" media="(min-width: 641px)" fetchpriority="high">"""
     if meta.get("hero"):
         h = meta["hero"]["img"]
         preload = f"""
-  <link rel="preload" as="image" imagesrcset="{r}assets/img/{h}-hero-800.webp 800w, {r}assets/img/{h}-hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">"""
+  <link rel="preload" as="image" imagesrcset="{r}assets/img/{h}-hero-800.webp 800w, {r}assets/img/{h}-hero-1600.webp 1600w" imagesizes="(max-width: 1200px) 100vw, 1200px" fetchpriority="high">"""
     ld = json.dumps(jsonld(meta, url), indent=2, ensure_ascii=False)
     return f"""<!doctype html>
 <html lang="en">
@@ -155,7 +155,7 @@ def head(meta, url, r):
   <meta http-equiv="Content-Security-Policy" content="{CSP}">
   <title>{t}</title>
   <meta name="description" content="{d}">
-  <meta name="theme-color" content="#111311">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="{url}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{ogt}">
@@ -184,10 +184,13 @@ def build_page(filename):
     out = meta["out"]
     if meta.get("hero"):
         h, alt = meta["hero"]["img"], html.escape(meta["hero"]["alt"], quote=True)
-        img = (f'\n      <img class="page-hero-img" src="{{{{R}}}}assets/img/{h}-hero-1600.webp" '
+        img = (f'      <div class="wrap hero-media"><img class="page-hero-img" src="{{{{R}}}}assets/img/{h}-hero-1600.webp" '
                f'srcset="{{{{R}}}}assets/img/{h}-hero-800.webp 800w, {{{{R}}}}assets/img/{h}-hero-1600.webp 1600w" '
-               f'sizes="100vw" alt="{alt}" width="1600" height="992" fetchpriority="high">')
-        body = re.sub(r'<section class="page-hero( page-hero-short)?">', lambda m: f'<section class="page-hero has-img{m.group(1) or ""}">' + img, body, count=1)
+               f'sizes="(max-width: 1200px) 100vw, 1200px" alt="{alt}" width="1600" height="992" fetchpriority="high"></div>\n')
+        # Photo sits under the headline, inside the hero section.
+        start = body.index('<section class="page-hero')
+        end = body.index("    </section>", start)
+        body = body[:start] + body[start:end].replace('<section class="page-hero', '<section class="page-hero has-img', 1) + img + body[end:]
     depth = out.count("/")
     r = "../" * depth
     url = SITE + "/" + (out[:-len("index.html")] if out.endswith("index.html") else out)
