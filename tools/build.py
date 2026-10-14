@@ -14,7 +14,7 @@ import re
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT_DIR, "src")
 SITE = "https://mythicbikeworks.com"
-VERSION = "14"  # bump when assets/css/styles.css or assets/js/main.js change
+VERSION = "15"  # bump when assets/css/styles.css or assets/js/main.js change
 
 SOUTH_COUNTY = ["Peace Dale", "Wakefield", "Kingston", "South Kingstown", "Narragansett", "North Kingstown",
                 "Charlestown", "Exeter", "Richmond", "Westerly", "Jamestown", "Newport"]
@@ -120,7 +120,7 @@ def head(meta, url, r):
     if meta.get("hero"):
         h = meta["hero"]["img"]
         preload = f"""
-  <link rel="preload" as="image" imagesrcset="{r}assets/img/{h}-hero-800.webp 800w, {r}assets/img/{h}-hero-1600.webp 1600w" imagesizes="(max-width: 900px) 100vw, 520px" fetchpriority="high">"""
+  <link rel="preload" as="image" imagesrcset="{r}assets/img/{h}-panel-560.webp 560w, {r}assets/img/{h}-panel-1120.webp 1120w" imagesizes="(max-width: 900px) calc(100vw - 32px), 480px" fetchpriority="high">"""
     ld = json.dumps(jsonld(meta, url), indent=2, ensure_ascii=False)
     return f"""<!doctype html>
 <html lang="en">
@@ -160,9 +160,9 @@ def build_page(filename):
     if meta.get("hero"):
         h, alt = meta["hero"]["img"], html.escape(meta["hero"]["alt"], quote=True)
         body = body.replace("{{HERO_IMG}}", (
-            f'<img class="panel-img" src="{{{{R}}}}assets/img/{h}-hero-800.webp" '
-            f'srcset="{{{{R}}}}assets/img/{h}-hero-800.webp 800w, {{{{R}}}}assets/img/{h}-hero-1600.webp 1600w" '
-            f'sizes="(max-width: 900px) 100vw, 520px" alt="{alt}" width="1600" height="992" fetchpriority="high">'))
+            f'<img class="panel-img" src="{{{{R}}}}assets/img/{h}-panel-560.webp" '
+            f'srcset="{{{{R}}}}assets/img/{h}-panel-560.webp 560w, {{{{R}}}}assets/img/{h}-panel-1120.webp 1120w" '
+            f'sizes="(max-width: 900px) calc(100vw - 32px), 480px" alt="{alt}" width="1120" height="700" fetchpriority="high">'))
     depth = out.count("/")
     r = "../" * depth
     url = SITE + "/" + (out[:-len("index.html")] if out.endswith("index.html") else out)
