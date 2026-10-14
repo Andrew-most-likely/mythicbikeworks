@@ -474,7 +474,7 @@ main > section.section:not(:first-child):not(.section-dark) { content-visibility
 .nav a[aria-current="page"] { color: #fff; border-color: var(--red-on-dark); }
 
 /* Service cards on the home page */
-.spokes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.spokes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .spoke { position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s; }
 .spoke:hover { border-color: var(--text); }
 .spoke img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
@@ -527,3 +527,24 @@ html.drawer-open { overflow: hidden; }
   .drawer-sub, .drawer-body { padding-left: 16px; padding-right: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .drawer[open] { animation: none; } }
+
+/* Page heroes with a photo */
+.page-hero.has-img { position: relative; isolation: isolate; min-height: clamp(420px, 56vh, 600px); display: flex; align-items: flex-end; }
+.page-hero.has-img > .wrap { width: 100%; }
+.page-hero-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.page-hero.has-img::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(17,19,17,.7) 0%, rgba(17,19,17,0) 28%),
+    linear-gradient(90deg, rgba(17,19,17,.9) 0%, rgba(17,19,17,.6) 50%, rgba(17,19,17,.25) 100%),
+    linear-gradient(0deg, rgba(17,19,17,.75) 0%, rgba(17,19,17,0) 55%);
+}
+@media (max-width: 640px) {
+  .page-hero.has-img { min-height: 0; }
+  .page-hero.has-img::before { background: linear-gradient(0deg, rgba(17,19,17,.94) 0%, rgba(17,19,17,.72) 60%, rgba(17,19,17,.55) 100%); }
+}
+
+/* Thank-you and 404 pages with a photo */
+.simple-page .simple { position: relative; isolation: isolate; }
+.simple-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.simple-page .simple::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(17,19,17,.82); }

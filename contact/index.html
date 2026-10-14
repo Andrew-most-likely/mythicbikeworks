@@ -17,7 +17,8 @@
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=10">
+  <link rel="preload" as="image" imagesrcset="../assets/img/contact-hero-800.webp 800w, ../assets/img/contact-hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=11">
   <script type="speculationrules">{"prefetch": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[target=_blank], [href*='/board/'], [href*='/hub/']"}}]}, "eagerness": "eager"}], "prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[target=_blank], [href*='/board/'], [href*='/hub/']"}}]}, "eagerness": "moderate"}]}</script>
   <script type="application/ld+json">
 {
@@ -101,7 +102,8 @@
     </div>
   </header>
   <main id="main">
-<section class="page-hero page-hero-short">
+<section class="page-hero has-img page-hero-short">
+      <img class="page-hero-img" src="../assets/img/contact-hero-1600.webp" srcset="../assets/img/contact-hero-800.webp 800w, ../assets/img/contact-hero-1600.webp 1600w" sizes="100vw" alt="Mountain biker riding fast through a green forest" width="1600" height="992" fetchpriority="high">
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><a href=".././">Home</a> <span>/</span> <span aria-current="page">Contact</span></nav>
         <h1>Get in touch</h1>
@@ -262,6 +264,6 @@
     <a href="../contact/" class="quickbar-accent" data-open-contact>Message</a>
   </nav>
 
-  <script src="../assets/js/main.js?v=10" defer></script>
+  <script src="../assets/js/main.js?v=11" defer></script>
 </body>
 </html>
