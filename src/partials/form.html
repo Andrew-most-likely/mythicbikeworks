@@ -16,30 +16,6 @@
               </div>
             </fieldset>
 
-            <div class="field" data-show="service">
-              <label for="f-service">Which service?</label>
-              <select id="f-service" name="service_requested">
-                <option value="">Not sure yet</option>
-                <option>Tune-up</option>
-                <option>Disc brake service</option>
-                <option>Tubeless setup</option>
-                <option>Wheel true &amp; tension</option>
-                <option>Hub bearings</option>
-                <option>Assembly, pack &amp; ship</option>
-                <option>Repairs &amp; installs</option>
-              </select>
-            </div>
-
-            <div class="field" data-show="suspension">
-              <label for="f-susp-service">Which service?</label>
-              <select id="f-susp-service" name="service_requested">
-                <option value="">Not sure yet</option>
-                <option>Basic service</option>
-                <option>Full overhaul</option>
-                <option>Linkage bearings</option>
-              </select>
-            </div>
-
             <div class="grid-2">
               <div class="field">
                 <label for="f-name">Name</label>
@@ -53,51 +29,76 @@
               </div>
             </div>
 
-            <fieldset class="segmented reply-via">
-              <legend>Best way to reply</legend>
-              <div class="seg-options">
-                <label><input type="radio" name="reply_via" value="Email" checked><span>Email</span></label>
-                <label><input type="radio" name="reply_via" value="Call"><span>Call</span></label>
-                <label><input type="radio" name="reply_via" value="Text"><span>Text</span></label>
+            <div class="grid-2">
+              <fieldset class="segmented reply-via">
+                <legend>Best way to reply</legend>
+                <div class="seg-options">
+                  <label><input type="radio" name="reply_via" value="Email" checked><span>Email</span></label>
+                  <label><input type="radio" name="reply_via" value="Call"><span>Call</span></label>
+                  <label><input type="radio" name="reply_via" value="Text"><span>Text</span></label>
+                </div>
+              </fieldset>
+              <div class="field">
+                <label for="f-phone">Phone <span class="opt" data-phone-opt>optional</span></label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+                <p class="err" id="f-phone-err"></p>
               </div>
-            </fieldset>
-
-            <div class="field">
-              <label for="f-phone">Phone <span class="opt" data-phone-opt>optional</span></label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
-              <p class="err" id="f-phone-err"></p>
             </div>
 
-            <div class="field" data-show="part service suspension build">
-              <label for="f-bike">Your bike <span class="opt">make, model, year</span></label>
-              <input id="f-bike" name="bike" type="text" placeholder="e.g. Transition Sentinel 2022">
+            <div class="grid-2">
+              <div class="field" data-show="service">
+                <label for="f-service">Which service?</label>
+                <select id="f-service" name="service_requested">
+                  <option value="">Not sure yet</option>
+                  <option>Tune-up</option>
+                  <option>Disc brake service</option>
+                  <option>Tubeless setup</option>
+                  <option>Wheel true &amp; tension</option>
+                  <option>Hub bearings</option>
+                  <option>Assembly, pack &amp; ship</option>
+                  <option>Repairs &amp; installs</option>
+                </select>
+              </div>
+              <div class="field" data-show="suspension">
+                <label for="f-susp-service">Which service?</label>
+                <select id="f-susp-service" name="service_requested">
+                  <option value="">Not sure yet</option>
+                  <option>Basic service</option>
+                  <option>Full overhaul</option>
+                  <option>Linkage bearings</option>
+                </select>
+              </div>
+              <div class="field" data-show="service suspension">
+                <label for="f-when">Drop-off <span class="opt">optional</span></label>
+                <select id="f-when" name="preferred_dropoff">
+                  <option value="">No preference</option>
+                  <option>Shipping it in</option>
+                  <option>Monday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                  <option>Saturday</option>
+                </select>
+              </div>
             </div>
 
-            <div class="field" data-show="part">
-              <label for="f-part">Part you're looking for</label>
-              <input id="f-part" name="part" type="text" placeholder="Name, size or part #">
-            </div>
-
-            <div class="field" data-show="suspension">
-              <label for="f-susp">Fork / shock model</label>
-              <input id="f-susp" name="suspension_model" type="text" placeholder="e.g. Cane Creek Helm MKII, Fox 36, RockShox Super Deluxe">
-            </div>
-
-            <div class="field" data-show="service suspension">
-              <label for="f-when">Drop-off <span class="opt">optional</span></label>
-              <select id="f-when" name="preferred_dropoff">
-                <option value="">No preference</option>
-                <option>Shipping it in</option>
-                <option>Monday</option>
-                <option>Thursday</option>
-                <option>Friday</option>
-                <option>Saturday</option>
-              </select>
+            <div class="grid-2">
+              <div class="field" data-show="part service suspension build">
+                <label for="f-bike">Your bike <span class="opt">make, model, year</span></label>
+                <input id="f-bike" name="bike" type="text" placeholder="e.g. Transition Sentinel 2022">
+              </div>
+              <div class="field" data-show="part">
+                <label for="f-part">Part you're looking for</label>
+                <input id="f-part" name="part" type="text" placeholder="Name, size or part #">
+              </div>
+              <div class="field" data-show="suspension">
+                <label for="f-susp">Fork / shock model</label>
+                <input id="f-susp" name="suspension_model" type="text" placeholder="e.g. Cane Creek Helm MKII, Fox 36, RockShox Super Deluxe">
+              </div>
             </div>
 
             <div class="field">
               <label for="f-msg" data-msg-label>Details</label>
-              <textarea id="f-msg" name="message" rows="5" required></textarea>
+              <textarea id="f-msg" name="message" rows="3" required></textarea>
               <p class="err" id="f-msg-err"></p>
             </div>
 

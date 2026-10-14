@@ -14,7 +14,7 @@ import re
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT_DIR, "src")
 SITE = "https://mythicbikeworks.com"
-VERSION = "13"  # bump when assets/css/styles.css or assets/js/main.js change
+VERSION = "14"  # bump when assets/css/styles.css or assets/js/main.js change
 
 SOUTH_COUNTY = ["Peace Dale", "Wakefield", "Kingston", "South Kingstown", "Narragansett", "North Kingstown",
                 "Charlestown", "Exeter", "Richmond", "Westerly", "Jamestown", "Newport"]
@@ -42,41 +42,37 @@ SPECULATION = {
         "eagerness": "moderate"}],
 }
 
-SUSP_PRICES = """          <ul class="menu">
-            <li class="menu-row">
-              <div class="menu-name"><h3>Basic service <span class="interval">50 hr</span></h3><p class="price">$50 <small>per fork or shock</small></p></div>
-              <ul class="items"><li>Fork lower seals and oil replaced</li><li>Rear shock air can seals and oil replaced</li></ul>
-              <a class="row-link" href="{{R}}contact/?inquiry=suspension&amp;service=Basic%20service" data-inquiry="suspension" data-service="Basic service">Request<span class="sr"> basic service</span></a>
-            </li>
-            <li class="menu-row">
-              <div class="menu-name"><h3>Full overhaul <span class="interval">200 hr</span></h3><p class="price">$140 <small>each</small></p></div>
-              <ul class="items"><li>Lower, damper and air spring seals replaced</li><li>Damper fluid replaced</li><li>Shock eye bushings replaced</li><li>Knobs, levers and dials replaced as needed</li></ul>
-              <a class="row-link" href="{{R}}contact/?inquiry=suspension&amp;service=Full%20overhaul" data-inquiry="suspension" data-service="Full overhaul">Request<span class="sr"> full overhaul</span></a>
-            </li>
-            <li class="menu-row">
-              <div class="menu-name"><h3>Linkage bearings</h3><p class="price price-q">Quoted</p></div>
-              <ul class="items"><li>Pivot bearings inspected and replaced</li><li>Pivot hardware torqued to spec</li></ul>
-              <a class="row-link" href="{{R}}contact/?inquiry=suspension&amp;service=Linkage%20bearings" data-inquiry="suspension" data-service="Linkage bearings">Request<span class="sr"> linkage bearings</span></a>
-            </li>
-          </ul>
-          <p class="fine">Prices are labor. Parts extra. We confirm the quote before any work starts.</p>"""
+def req(inquiry, name):
+    """Inline "Request" link that opens the form preset to one service."""
+    q = name.replace(" ", "%20").replace("&amp;", "%26").replace(",", "%2C")
+    return (f'<a class="row-link" href="{{{{R}}}}contact/?inquiry={inquiry}&amp;service={q}" '
+            f'data-inquiry="{inquiry}" data-service="{name}">Request<span class="sr"> {name}</span></a>')
 
-STEPS = """          <ol class="steps">
-            <li><h3>Send us a message</h3><p>Tell us the fork or shock model and what it's doing. Choose <strong>Shipping it in</strong> on the form.</p></li>
-            <li><h3>Get a quote and instructions</h3><p>We reply with the price and how to pack and ship it.</p></li>
-            <li><h3>Ship it to Peace Dale, RI</h3><p>Send just the fork or shock unless we ask for more.</p></li>
-            <li><h3>Serviced and shipped back</h3><p>We do the work in-house and send it home, ready to bolt on.</p></li>
+
+def row(name, price, text, inquiry):
+    return (f'            <li class="menu-row">\n'
+            f'              <div class="menu-name"><h3>{name}</h3><p class="price">{price}</p></div>\n'
+            f'              <p>{text} {req(inquiry, re.sub(r"<[^>]+>.*", "", name).strip())}</p>\n'
+            f'            </li>')
+
+
+SUSP_PRICES = "\n".join([
+    '          <ul class="menu menu-tight">',
+    row('Basic service <span class="interval">every 50 hr</span>', '$50 <small>per fork or shock</small>',
+        "Fork lower seals and oil, or rear shock air can seals and oil.", "suspension"),
+    row('Full overhaul <span class="interval">every 200 hr</span>', '$140 <small>each</small>',
+        "Lower, damper and air spring seals, damper fluid, shock eye bushings. Knobs and dials as needed.", "suspension"),
+    row("Linkage bearings", '<span class="price-q">Quoted</span>',
+        "Pivot bearings inspected and replaced, hardware torqued to spec.", "suspension"),
+    "          </ul>",
+    '          <p class="fine">Labor only, parts extra. Same rates for drop-off and mail-in. We confirm the quote before work starts.</p>'])
+
+STEPS = """          <ol class="steps steps-tight">
+            <li><h3>Message us</h3><p>Model and what it's doing. Choose <strong>Shipping it in</strong>.</p></li>
+            <li><h3>Get a quote</h3><p>We reply with the price and packing instructions.</p></li>
+            <li><h3>Ship it</h3><p>Just the fork or shock, to Peace Dale, RI.</p></li>
+            <li><h3>Ride it</h3><p>Serviced in-house and shipped home.</p></li>
           </ol>"""
-
-CTA = """    <section class="cta-band">
-      <div class="wrap cta-inner">
-        <div>
-          <h2>Ready when you are.</h2>
-          <p>Send a message or call <a href="tel:+14012180029">401-218-0029</a>. Open Mon, Thu–Sat at 1207 Kingstown Rd, Peace Dale, RI.</p>
-        </div>
-        <a class="btn btn-dark btn-lg" href="{{R}}contact/" data-open-contact>Send a message</a>
-      </div>
-    </section>"""
 
 
 def read(*parts):
@@ -86,23 +82,6 @@ def read(*parts):
 
 def strip_tags(s):
     return html.unescape(re.sub(r"<[^>]+>", "", s))
-
-
-def faq_html(faqs):
-    items = "\n".join(
-        f'          <details class="faq-item">\n            <summary>{html.escape(q)}</summary>\n            <p>{a}</p>\n          </details>'
-        for q, a in faqs)
-    return f"""    <section class="section" aria-labelledby="faq-title">
-      <div class="wrap two-col">
-        <div class="col-intro">
-          <p class="kicker">Questions</p>
-          <h2 id="faq-title">Common questions</h2>
-        </div>
-        <div class="faq">
-{items}
-        </div>
-      </div>
-    </section>"""
 
 
 def jsonld(meta, url):
@@ -122,10 +101,6 @@ def jsonld(meta, url):
         if svc.get("brand"):
             node["brand"] = {"@type": "Brand", "name": svc["brand"]}
         graph.append(node)
-    if meta.get("faqs"):
-        graph.append({"@type": "FAQPage", "mainEntity": [
-            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a).replace("{{R}}", "")}}
-            for q, a in meta["faqs"]]})
     if meta.get("crumb"):
         graph.append({"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
@@ -145,7 +120,7 @@ def head(meta, url, r):
     if meta.get("hero"):
         h = meta["hero"]["img"]
         preload = f"""
-  <link rel="preload" as="image" imagesrcset="{r}assets/img/{h}-hero-800.webp 800w, {r}assets/img/{h}-hero-1600.webp 1600w" imagesizes="(max-width: 1200px) 100vw, 1200px" fetchpriority="high">"""
+  <link rel="preload" as="image" imagesrcset="{r}assets/img/{h}-hero-800.webp 800w, {r}assets/img/{h}-hero-1600.webp 1600w" imagesizes="(max-width: 900px) 100vw, 520px" fetchpriority="high">"""
     ld = json.dumps(jsonld(meta, url), indent=2, ensure_ascii=False)
     return f"""<!doctype html>
 <html lang="en">
@@ -184,23 +159,16 @@ def build_page(filename):
     out = meta["out"]
     if meta.get("hero"):
         h, alt = meta["hero"]["img"], html.escape(meta["hero"]["alt"], quote=True)
-        img = (f'      <div class="wrap hero-media"><img class="page-hero-img" src="{{{{R}}}}assets/img/{h}-hero-1600.webp" '
-               f'srcset="{{{{R}}}}assets/img/{h}-hero-800.webp 800w, {{{{R}}}}assets/img/{h}-hero-1600.webp 1600w" '
-               f'sizes="(max-width: 1200px) 100vw, 1200px" alt="{alt}" width="1600" height="992" fetchpriority="high"></div>\n')
-        # Photo sits under the headline, inside the hero section.
-        start = body.index('<section class="page-hero')
-        end = body.index("    </section>", start)
-        body = body[:start] + body[start:end].replace('<section class="page-hero', '<section class="page-hero has-img', 1) + img + body[end:]
+        body = body.replace("{{HERO_IMG}}", (
+            f'<img class="panel-img" src="{{{{R}}}}assets/img/{h}-hero-800.webp" '
+            f'srcset="{{{{R}}}}assets/img/{h}-hero-800.webp 800w, {{{{R}}}}assets/img/{h}-hero-1600.webp 1600w" '
+            f'sizes="(max-width: 900px) 100vw, 520px" alt="{alt}" width="1600" height="992" fetchpriority="high">'))
     depth = out.count("/")
     r = "../" * depth
     url = SITE + "/" + (out[:-len("index.html")] if out.endswith("index.html") else out)
 
     form = read("partials", "form.html")
     parts = [head(meta, url, r), read("partials", "header.html"), '  <main id="main">\n', body]
-    if meta.get("faqs"):
-        parts.append(faq_html(meta["faqs"]) + "\n\n")
-    if meta.get("crumb") and not meta.get("inline_form"):
-        parts.append(CTA + "\n")
     parts.append("  </main>\n\n")
     parts.append(read("partials", "footer.html"))
     if not meta.get("inline_form"):

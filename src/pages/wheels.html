@@ -1,60 +1,67 @@
 <!--meta
 {
-  "hero": {"img": "wheels", "alt": "Building a wheel around a red hub on the shop bench"},
+  "hero": {
+    "img": "wheels",
+    "alt": "Building a wheel around a red hub on the shop bench"
+  },
   "out": "wheels-and-builds/index.html",
   "nav": "wheels",
   "title": "Custom Wheel Building & Bike Builds, RI | Mythic Bike Works",
   "description": "Hand-built wheelsets and custom bike builds in Peace Dale, RI. Hubs, rims and Sapim or DT Swiss spokes picked for how you ride. Special orders welcome.",
   "crumb": "Wheels & builds",
-  "service": {"name": "Custom wheel building and bike builds", "serviceType": "Bicycle wheel building", "offers": [["Wheel true & tension", "30"], ["Hub bearings", "30"]]},
-  "area": "local",
-  "faqs": [
-    ["Can you build a wheelset to my spec?", "Yes. We pick the hubs, rims, spokes and nipples with you to match your riding, from carbon race wheels to downhill."],
-    ["Which spokes do you use?", "Sapim and DT Swiss, in many profiles and weights."],
-    ["Can you order a part that isn't carried locally?", "Yes. Special orders are welcome. <a href=\"{{R}}contact/?inquiry=part\" data-inquiry=\"part\">Ask about a part</a> and we'll track it down."],
-    ["Do you build bikes for kids?", "Yes. From a light, budget race bike for your kid to a top-shelf dream build, no project is too small or too big."],
-    ["How much does a custom build cost?", "Every build is quoted. <a href=\"{{R}}contact/?inquiry=build\" data-inquiry=\"build\">Tell us about it</a> and we'll put together a plan and a price."]
-  ]
+  "service": {
+    "name": "Custom wheel building and bike builds",
+    "serviceType": "Bicycle wheel building",
+    "offers": [
+      [
+        "Wheel true & tension",
+        "30"
+      ],
+      [
+        "Hub bearings",
+        "30"
+      ]
+    ]
+  },
+  "area": "local"
 }
 -->
-    <section class="page-hero">
-      <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="{{R}}./">Home</a> <span>/</span> <span aria-current="page">Wheels &amp; builds</span></nav>
-        <h1>Custom wheels &amp; bike builds</h1>
-        <p class="lede">Hand-built wheelsets and custom builds, planned with you and tuned in Peace Dale, RI. Special orders welcome.</p>
-        <div class="hero-actions">
-          <a class="btn btn-accent btn-lg" href="{{R}}contact/?inquiry=build" data-inquiry="build">Start a build</a>
-          <a class="btn btn-outline-light btn-lg" href="{{R}}contact/?inquiry=part" data-inquiry="part">Ask about a part</a>
+    <section class="panel">
+      <div class="wrap panel-grid">
+        <div class="panel-intro">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="{{R}}./">Home</a> <span>/</span> <span aria-current="page">Wheels &amp; builds</span></nav>
+          <h1>Custom wheels &amp; bike builds</h1>
+          <p class="lede">Hand-built wheelsets and custom builds, planned with you and tuned in Peace Dale, RI. Special orders welcome.</p>
+          <div class="hero-actions">
+            <a class="btn btn-accent btn-lg" href="{{R}}contact/?inquiry=build" data-inquiry="build">Start a build</a>
+            <a class="btn btn-outline-light btn-lg" href="{{R}}contact/?inquiry=part" data-inquiry="part">Ask about a part</a>
+          </div>
+          {{HERO_IMG}}
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <div class="duo">
-          <article class="feature">
-            <h2 class="feature-title">Hand-built wheelsets</h2>
-            <p>Wheels change how a bike rides, weighs and handles. We build yours to match how you ride.</p>
-            <dl class="specs">
-              <div><dt>Hubs</dt><dd>Any size, axle, spoke count, freehub and color</dd></div>
-              <div><dt>Rims</dt><dd>Carbon race to DH, tubeless ready</dd></div>
-              <div><dt>Spokes</dt><dd>Sapim and DT Swiss</dd></div>
-              <div><dt>Service</dt><dd>True &amp; tension or hub bearings, <strong>$30</strong> each plus parts</dd></div>
-            </dl>
-            <a class="text-link" href="{{R}}contact/?inquiry=build" data-inquiry="build">Plan a wheelset</a>
-          </article>
-
-          <article class="feature">
-            <h2 class="feature-title">Custom builds</h2>
-            <p>A light, budget race bike for your kid or a top-shelf dream build. We help you plan it, build it and tune it.</p>
-            <p>Special orders welcome. If it isn't carried locally, we'll find it.</p>
-            <a class="text-link" href="{{R}}contact/?inquiry=build" data-inquiry="build">Start a build</a>
-          </article>
-        </div>
-
-        <div class="brands">
-          <p class="kicker">Brands we work with</p>
-          <ul class="brand-list"><li>Cane&nbsp;Creek</li><li>Transition</li><li>Ibis</li><li>Surly</li><li>Jamis</li><li>NOX&nbsp;Composites</li><li>Light&nbsp;Bicycle</li><li>CushCore</li><li>DT&nbsp;Swiss</li><li>Sapim</li></ul>
+        <div class="panel-body">
+          <div class="duo">
+            <article class="feature">
+              <h2 class="feature-title">Hand-built wheelsets</h2>
+              <p>Built to match how you ride, weigh and handle.</p>
+              <dl class="specs">
+                <div><dt>Hubs</dt><dd>Any size, axle, spoke count and color</dd></div>
+                <div><dt>Rims</dt><dd>Carbon race to DH, tubeless ready</dd></div>
+                <div><dt>Spokes</dt><dd>Sapim and DT Swiss</dd></div>
+                <div><dt>Service</dt><dd>True &amp; tension or hub bearings, <strong>$30</strong> each</dd></div>
+              </dl>
+              <a class="text-link" href="{{R}}contact/?inquiry=build" data-inquiry="build">Plan a wheelset</a>
+            </article>
+            <article class="feature">
+              <h2 class="feature-title">Custom builds</h2>
+              <p>A light, budget race bike for your kid or a top-shelf dream build. We plan it, build it and tune it.</p>
+              <p>Every build is quoted. If a part isn't carried locally, we'll find it.</p>
+              <a class="text-link" href="{{R}}contact/?inquiry=build" data-inquiry="build">Start a build</a>
+            </article>
+          </div>
+          <div class="brands">
+            <p class="kicker">Brands we work with</p>
+            <ul class="brand-list"><li>Cane&nbsp;Creek</li><li>Transition</li><li>Ibis</li><li>Surly</li><li>Jamis</li><li>NOX&nbsp;Composites</li><li>Light&nbsp;Bicycle</li><li>CushCore</li><li>DT&nbsp;Swiss</li><li>Sapim</li></ul>
+          </div>
         </div>
       </div>
     </section>

@@ -1,79 +1,48 @@
 <!--meta
 {
-  "hero": {"img": "suspension", "alt": "Worn fork seals next to new ones during a fork service"},
+  "hero": {
+    "img": "suspension",
+    "alt": "Worn fork seals next to new ones during a fork service"
+  },
   "out": "suspension-service/index.html",
   "nav": "suspension",
   "title": "Fork & Shock Service, Drop Off or Mail In | Mythic Bike Works",
   "description": "Mountain bike fork and shock service for every brand. Drop off in Peace Dale, RI or mail it in from anywhere in the Northeast. Basic service $50, overhaul $140.",
   "crumb": "Suspension & mail-in",
-  "service": {"name": "Mountain bike suspension service", "serviceType": "Bicycle suspension service", "offers": [["Basic service", "50"], ["Full overhaul", "140"]]},
-  "area": "mail",
-  "faqs": [
-    ["How often should I service my fork and shock?", "A basic lower service about every 50 riding hours and a full overhaul about every 200 hours is a good rule. Your manufacturer's manual has the exact interval."],
-    ["Do you service Fox and RockShox?", "Yes. We service forks and shocks from every major brand, including Fox, RockShox, Marzocchi and Cane Creek."],
-    ["Can I mail my fork or shock to you?", "Yes. <a href=\"{{R}}contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in\" data-inquiry=\"suspension\" data-dropoff=\"Shipping it in\">Send us a message</a> with the model and what it's doing, and we'll reply with a quote and shipping instructions."],
-    ["Do I need to send the whole bike?", "Usually just the fork or shock. We'll confirm when we reply. Linkage bearing work needs the frame."],
-    ["How long does it take?", "It depends on parts and the season. We give you a turnaround estimate when you get in touch."],
-    ["Where are you?", "1207 Kingstown Rd, Peace Dale, RI 02879, on the South County Bike Path near Wakefield, Narragansett and the URI campus."]
-  ]
+  "service": {
+    "name": "Mountain bike suspension service",
+    "serviceType": "Bicycle suspension service",
+    "offers": [
+      [
+        "Basic service",
+        "50"
+      ],
+      [
+        "Full overhaul",
+        "140"
+      ]
+    ]
+  },
+  "area": "mail"
 }
 -->
-    <section class="page-hero">
-      <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="{{R}}./">Home</a> <span>/</span> <span aria-current="page">Suspension &amp; mail-in</span></nav>
-        <h1>Fork &amp; shock service, drop off or mail in</h1>
-        <p class="lede">Mountain bike suspension service for every brand, done in-house in Peace Dale, RI. Local riders drop off. Riders across the Northeast ship their forks and shocks to us.</p>
-        <div class="hero-actions">
-          <a class="btn btn-accent btn-lg" href="{{R}}contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in" data-inquiry="suspension" data-dropoff="Shipping it in">Start a mail-in service</a>
-          <a class="btn btn-outline-light btn-lg" href="{{R}}contact/?inquiry=suspension" data-inquiry="suspension">Book a drop-off</a>
+    <section class="panel">
+      <div class="wrap panel-grid">
+        <div class="panel-intro">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="{{R}}./">Home</a> <span>/</span> <span aria-current="page">Suspension &amp; mail-in</span></nav>
+          <h1>Fork &amp; shock service, drop off or mail in</h1>
+          <p class="lede">Every brand, done in-house in Peace Dale, RI: Fox, RockShox, Marzocchi and <a href="{{R}}cane-creek-service-center/">Cane Creek</a>. Local riders drop off. Riders across the Northeast ship to us.</p>
+          <div class="hero-actions">
+            <a class="btn btn-accent btn-lg" href="{{R}}contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in" data-inquiry="suspension" data-dropoff="Shipping it in">Start a mail-in service</a>
+            <a class="btn btn-outline-light btn-lg" href="{{R}}contact/?inquiry=suspension" data-inquiry="suspension">Book a drop-off</a>
+          </div>
+          {{HERO_IMG}}
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap two-col">
-        <div class="col-intro">
-          <p class="kicker">Every brand</p>
-          <h2>All brands, one bench</h2>
-        </div>
-        <div class="prose">
-          <p>We service forks and rear shocks from every major brand, including Fox, RockShox, Marzocchi and Cane Creek.</p>
-          <p>For Cane Creek, we are the <a href="{{R}}cane-creek-service-center/">only certified suspension service center on the East Coast</a>.</p>
-          <h3>Signs it's time for service</h3>
-          <ul class="items items-light">
-            <li>Oil on the stanchions or shock body</li>
-            <li>Harsh over small bumps, or sticky at the top of the travel</li>
-            <li>Knocking, clunking or a top-out thud</li>
-            <li>More than 50 riding hours since the last lower service</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-dark">
-      <div class="wrap two-col">
-        <div class="col-intro">
-          <p class="kicker">Pricing</p>
-          <h2>Suspension service pricing</h2>
-          <p class="sub">The same rates for drop-off and mail-in.</p>
-          <img class="intro-img" src="{{R}}assets/img/linkage-600.webp" srcset="{{R}}assets/img/linkage-600.webp 600w, {{R}}assets/img/linkage.webp 1000w" sizes="(max-width: 900px) 100vw, 400px" alt="Rear suspension linkage parts on a workbench with new bearings" width="1000" height="1000" loading="lazy">
-        </div>
-        <div>
+        <div class="panel-body">
+          <h2 class="panel-title">Pricing</h2>
 {{SUSP_PRICES}}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="mail-in">
-      <div class="wrap two-col">
-        <div class="col-intro">
-          <p class="kicker">Mail-in</p>
-          <h2>How mail-in service works</h2>
-          <p class="sub">Riders ship to us from Massachusetts, Connecticut, New York, New Jersey, Pennsylvania, New Hampshire, Vermont, Maine and beyond.</p>
-        </div>
-        <div>
+          <h2 class="panel-title" id="mail-in">How mail-in works</h2>
 {{STEPS}}
-          <a class="btn btn-dark" href="{{R}}contact/?inquiry=suspension&amp;dropoff=Shipping%20it%20in" data-inquiry="suspension" data-dropoff="Shipping it in">Start a mail-in service</a>
         </div>
       </div>
     </section>

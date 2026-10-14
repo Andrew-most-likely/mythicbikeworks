@@ -1,82 +1,92 @@
 <!--meta
 {
-  "hero": {"img": "service", "alt": "Disc brake rotor and caliper on a freshly serviced front wheel"},
+  "hero": {
+    "img": "service",
+    "alt": "Disc brake rotor and caliper on a freshly serviced front wheel"
+  },
   "out": "service/index.html",
   "nav": "service",
   "title": "Bike Repair & Tune-Ups in Wakefield, RI | Mythic Bike Works",
   "description": "Bike tune-ups, brake bleeds, tubeless setup, wheel truing and repairs in Peace Dale near Wakefield, RI. Tune-up $75. Road, gravel, mountain and kids' bikes.",
   "crumb": "Service & repair",
-  "service": {"name": "Bicycle repair and tune-ups", "serviceType": "Bicycle repair", "offers": [["Tune-up", "75"], ["Disc brake service", "25"], ["Tubeless setup", "30"], ["Wheel true & tension", "30"], ["Hub bearings", "30"], ["Assembly, pack & ship", "75"]]},
-  "area": "local",
-  "faqs": [
-    ["Do I need an appointment?", "No. Drop-ins are welcome during open hours. For bigger jobs, <a href=\"{{R}}contact/?inquiry=service\" data-inquiry=\"service\">send us a message</a> first and we'll plan the work."],
-    ["What does a tune-up include?", "A top-to-bottom inspection. Shifting and brakes adjusted, wheels trued, bolts and bearings adjusted, worn chain, pads, tubes or sealant replaced as needed, and a written condition report."],
-    ["Do prices include parts?", "No. Prices are labor. We confirm parts and the total before any work starts."],
-    ["Can you assemble a bike I bought online?", "Yes. Assembly and adjustment is $75. We can also pack and ship a bike for you; round trip with reassembly is $120."],
-    ["What kinds of bikes do you work on?", "Road, gravel, mountain, commuter and kids' bikes."],
-    ["Where are you?", "1207 Kingstown Rd, Peace Dale, RI 02879, on the South County Bike Path near Wakefield, Narragansett and the URI campus."]
-  ]
+  "service": {
+    "name": "Bicycle repair and tune-ups",
+    "serviceType": "Bicycle repair",
+    "offers": [
+      [
+        "Tune-up",
+        "75"
+      ],
+      [
+        "Disc brake service",
+        "25"
+      ],
+      [
+        "Tubeless setup",
+        "30"
+      ],
+      [
+        "Wheel true & tension",
+        "30"
+      ],
+      [
+        "Hub bearings",
+        "30"
+      ],
+      [
+        "Assembly, pack & ship",
+        "75"
+      ]
+    ]
+  },
+  "area": "local"
 }
 -->
-    <section class="page-hero">
-      <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="{{R}}./">Home</a> <span>/</span> <span aria-current="page">Service &amp; repair</span></nav>
-        <h1>Bike repair &amp; tune-ups</h1>
-        <p class="lede">Road, gravel, mountain, commuter and kids' bikes, fixed right in Peace Dale near Wakefield, RI. Drop-ins welcome.</p>
-        <div class="hero-actions">
-          <a class="btn btn-accent btn-lg" href="{{R}}contact/?inquiry=service" data-inquiry="service">Request service</a>
-          <a class="btn btn-outline-light btn-lg" href="tel:+14012180029">Call 401-218-0029</a>
+    <section class="panel">
+      <div class="wrap panel-grid">
+        <div class="panel-intro">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="{{R}}./">Home</a> <span>/</span> <span aria-current="page">Service &amp; repair</span></nav>
+          <h1>Bike repair &amp; tune-ups</h1>
+          <p class="lede">Road, gravel, mountain, commuter and kids' bikes, fixed right in Peace Dale near Wakefield, RI. Drop-ins welcome.</p>
+          <div class="hero-actions">
+            <a class="btn btn-accent btn-lg" href="{{R}}contact/?inquiry=service" data-inquiry="service">Request service</a>
+            <a class="btn btn-outline-light btn-lg" href="tel:+14012180029">Call 401-218-0029</a>
+          </div>
+          {{HERO_IMG}}
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap two-col">
-        <div class="col-intro">
-          <p class="kicker">Prices</p>
-          <h2>Service menu</h2>
-          <p class="sub">Prices are labor. Parts extra. We confirm the total before any work starts.</p>
-          <img class="intro-img" src="{{R}}assets/img/bottombracket-600.webp" srcset="{{R}}assets/img/bottombracket-600.webp 600w, {{R}}assets/img/bottombracket.webp 1000w" sizes="(max-width: 900px) 100vw, 400px" alt="Bottom bracket being serviced with a shop tool" width="1000" height="1000">
-        </div>
-        <div>
-          <ul class="menu">
+        <div class="panel-body">
+          <h2 class="panel-title">Service menu</h2>
+          <ul class="menu menu-tight menu-cols">
             <li class="menu-row">
               <div class="menu-name"><h3>Tune-up</h3><p class="price">$75</p></div>
-              <p>Top-to-bottom inspection. Shifting and brakes adjusted, wheels trued, bolts and bearings adjusted. Worn chain, pads, tubes or sealant replaced as needed. Written condition report.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Tune-up" data-inquiry="service" data-service="Tune-up">Request<span class="sr"> Tune-up</span></a>
+              <p>Full inspection. Shifting, brakes, wheels, bolts and bearings adjusted. Written condition report. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Tune-up" data-inquiry="service" data-service="Tune-up">Request<span class="sr"> Tune-up</span></a></p>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Disc brake service</h3><p class="price">$25 <small>per brake</small></p></div>
-              <p>Hydraulic bleed, pistons, pads and rotors cleaned. Rotors straightened and pads replaced as needed.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Disc%20brake%20service" data-inquiry="service" data-service="Disc brake service">Request<span class="sr"> Disc brake service</span></a>
+              <p>Hydraulic bleed, pistons, pads and rotors cleaned and straightened. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Disc%20brake%20service" data-inquiry="service" data-service="Disc brake service">Request<span class="sr"> Disc brake service</span></a></p>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Tubeless setup</h3><p class="price">$30 <small>per wheel</small></p></div>
-              <p>Rim tape, valve core and sealant. Parts included.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Tubeless%20setup" data-inquiry="service" data-service="Tubeless setup">Request<span class="sr"> Tubeless setup</span></a>
+              <p>Rim tape, valve core and sealant included. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Tubeless%20setup" data-inquiry="service" data-service="Tubeless setup">Request<span class="sr"> Tubeless setup</span></a></p>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Wheel true &amp; tension</h3><p class="price">$30 <small>each</small></p></div>
-              <p>Wheel trued and spoke tension set. Damaged spokes and nipples replaced.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Wheel%20true%20%26%20tension" data-inquiry="service" data-service="Wheel true &amp; tension">Request<span class="sr"> Wheel true &amp; tension</span></a>
+              <p>Trued and tensioned. Damaged spokes and nipples replaced. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Wheel%20true%20%26%20tension" data-inquiry="service" data-service="Wheel true &amp; tension">Request<span class="sr"> Wheel true &amp; tension</span></a></p>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Hub bearings</h3><p class="price">$30 <small>each</small></p></div>
-              <p>Cartridge bearings replaced in the hub and freehub, or loose-ball hubs repacked and adjusted.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Hub%20bearings" data-inquiry="service" data-service="Hub bearings">Request<span class="sr"> Hub bearings</span></a>
+              <p>Cartridge bearings replaced, or loose-ball hubs repacked. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Hub%20bearings" data-inquiry="service" data-service="Hub bearings">Request<span class="sr"> Hub bearings</span></a></p>
             </li>
             <li class="menu-row">
               <div class="menu-name"><h3>Assembly, pack &amp; ship</h3><p class="price">$75</p></div>
-              <p>Bought a bike online? We assemble and adjust it. Selling or traveling? We pack and ship it. $120 round trip with reassembly.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Assembly%2C%20pack%20%26%20ship" data-inquiry="service" data-service="Assembly, pack &amp; ship">Request<span class="sr"> Assembly, pack &amp; ship</span></a>
+              <p>Online bike assembled and adjusted. $120 round trip with reassembly. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Assembly%2C%20pack%20%26%20ship" data-inquiry="service" data-service="Assembly, pack &amp; ship">Request<span class="sr"> Assembly, pack &amp; ship</span></a></p>
             </li>
             <li class="menu-row">
-              <div class="menu-name"><h3>Repairs &amp; installs</h3><p class="price price-q">Quoted</p></div>
-              <p>Dropper posts, power meters, creaks, grinding drivetrains. We find the problem and fix it.</p>
-              <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Repairs%20%26%20installs" data-inquiry="service" data-service="Repairs &amp; installs">Request<span class="sr"> Repairs &amp; installs</span></a>
+              <div class="menu-name"><h3>Repairs &amp; installs</h3><p class="price"><span class="price-q">Quoted</span></p></div>
+              <p>Droppers, power meters, creaks, grinding drivetrains. <a class="row-link" href="{{R}}contact/?inquiry=service&amp;service=Repairs%20%26%20installs" data-inquiry="service" data-service="Repairs &amp; installs">Request<span class="sr"> Repairs &amp; installs</span></a></p>
             </li>
           </ul>
-          <p class="fine">Suspension work has its own menu: <a href="{{R}}suspension-service/">fork &amp; shock service</a>.</p>
+          <p class="fine">Labor only, parts extra. We confirm the total before work starts. Fork or shock? See <a href="{{R}}suspension-service/">suspension service</a>.</p>
         </div>
       </div>
     </section>
