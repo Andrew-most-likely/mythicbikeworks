@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<title>Mythic Bike Works Hub</title>
+<style>
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/archivo-latin.woff2") format("woff2"); font-weight: 400 900; font-stretch: 100% 125%; font-display: swap; }
+:root { --ink:#111311; --ink2:#1b1d1a; --line-d:#2e312d; --paper:#f5f5f2; --white:#fff; --line:#d4d5cf; --text:#141614; --muted:#595d57; --muted-d:#9a9e97; --red:#c7271c; --ok:#1f7a3f; --warn:#9a5b00; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin:0; background:var(--paper); color:var(--text); font:400 16px/1.55 "Archivo", system-ui, sans-serif; }
+a { color: inherit; }
+code { font: 500 .85em ui-monospace, SFMono-Regular, Menlo, monospace; background: #e9e9e4; padding: 1px 5px; border-radius: 3px; }
+h1,h2,h3 { margin:0; line-height:1.1; }
+h2 { font-weight:800; font-stretch:118%; font-size:1.7rem; letter-spacing:-.02em; }
+h3 { font-weight:700; font-size:1.05rem; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+header.top { position: sticky; top: 0; z-index: 10; background: var(--ink); color: #fff; border-bottom: 1px solid var(--line-d); }
+.top .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
+.top img { height: 34px; width: auto; }
+.top .title { font-weight: 700; font-stretch: 112%; color: var(--muted-d); font-size: .95rem; padding-left: 18px; border-left: 1px solid var(--line-d); }
+.top nav { margin-left: auto; display: flex; gap: 18px; overflow-x: auto; }
+.top nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .9rem; white-space: nowrap; }
+.top nav a:hover { color: #fff; }
+
+.hero { background: var(--ink); color: #fff; padding: 40px 0 36px; }
+.hero h1 { font-weight: 900; font-stretch: 125%; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.2rem); letter-spacing: -.03em; }
+.hero p { color: var(--muted-d); margin: 10px 0 0; max-width: 46rem; }
+.quick { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 26px; }
+.quick a { display: block; padding: 14px 16px; border: 1px solid var(--line-d); background: var(--ink2); border-radius: 4px; text-decoration: none; }
+.quick a strong { display: block; font-weight: 700; }
+.quick a span { color: var(--muted-d); font-size: .85rem; word-break: break-all; }
+.quick a:hover { border-color: #74786f; }
+.quick a.primary { background: var(--red); border-color: var(--red); }
+.quick a.primary span { color: rgba(255,255,255,.85); }
+.status-line { margin-top: 16px; font-size: .9rem; color: var(--muted-d); }
+.status-line b { color: #fff; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--muted-d); margin-right: 6px; }
+.dot.up { background: #3ccf6e; } .dot.down { background: #ef4a3c; }
+
+section.block { padding: 44px 0; border-bottom: 1px solid var(--line); }
+.block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.block-head p { margin: 6px 0 0; color: var(--muted); max-width: 44rem; }
+
+.pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 18px; }
+.page-card { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.pc-head { display: flex; justify-content: space-between; gap: 12px; }
+.pc-head p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+.pc-links { display: flex; gap: 6px; flex: none; align-items: flex-start; }
+.pc-links a { font-size: .82rem; font-weight: 700; padding: 6px 10px; border: 1px solid var(--line); border-radius: 3px; text-decoration: none; }
+.pc-links a:hover { border-color: var(--text); }
+.toggle { display: flex; gap: 6px; }
+.toggle button { font: 600 .8rem "Archivo", sans-serif; padding: 6px 10px; border: 1px solid var(--line); background: #fff; border-radius: 3px; cursor: pointer; color: var(--text); }
+.toggle button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.frame-wrap { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); margin: 0 auto; width: 100%; }
+.frame-wrap iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; pointer-events: auto; background: #fff; }
+.frame-wrap.desktop { aspect-ratio: 1366 / 900; }
+.frame-wrap.tablet { aspect-ratio: 768 / 1024; width: 70%; }
+.frame-wrap.phone { aspect-ratio: 390 / 844; width: 52%; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } }
+table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; font-size: .93rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: #ecece7; font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+td.warn { color: var(--warn); }
+.tag { font-size: .75rem; font-weight: 700; padding: 3px 7px; border-radius: 3px; }
+.tag.ok { background: #e3f1e8; color: var(--ok); }
+.tag.verify { background: #fbeedb; color: var(--warn); }
+
+.acts { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+.act-group { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
+.act-group h3 { margin-bottom: 10px; display: flex; justify-content: space-between; gap: 8px; }
+.count { font-size: .8rem; color: var(--muted); font-weight: 600; }
+.act-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.act-group label { display: flex; gap: 10px; align-items: flex-start; padding: 6px 4px; border-radius: 3px; cursor: pointer; }
+.act-group label:hover { background: var(--paper); }
+.act-group input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--red); flex: none; }
+.act-group input:checked + span { color: var(--muted); text-decoration: line-through; }
+.progress { height: 6px; background: #e3e3dd; border-radius: 3px; overflow: hidden; width: 220px; }
+.progress span { display: block; height: 100%; background: var(--red); width: 0; transition: width .2s; }
+.prog-wrap { display: flex; align-items: center; gap: 10px; font-size: .9rem; color: var(--muted); }
+
+ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+ol.plain { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; }
+.card h3 { margin-bottom: 12px; }
+.card.rules { border-left: 4px solid var(--red); }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.swatch { display: flex; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+.swatch > span { width: 44px; height: 44px; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); flex: none; }
+.swatch p { margin: 2px 0 0; color: var(--muted); font-size: .85rem; }
+.note { color: var(--muted); font-size: .9rem; margin-top: 10px; }
+.flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin-bottom: 14px; }
+.flow div { flex: 1 1 180px; background: #fff; border: 1px solid var(--line); padding: 12px 14px; border-radius: 6px; }
+.flow div.key { border: 2px solid var(--red); }
+.flow i { align-self: center; padding: 0 8px; font-style: normal; color: var(--muted); }
+.flow p { margin: 4px 0 0; color: var(--muted); font-size: .88rem; }
+footer.bottom { padding: 28px 0 60px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <img src="../assets/img/logo-wordmark-440.webp" alt="Mythic Bike Works">
+    <span class="title">Project hub</span>
+    <nav aria-label="Sections">
+      <a href="#pages">Pages</a><a href="#todo">To-do</a><a href="#facts">Facts</a><a href="#prices">Prices</a>
+      <a href="#seo">Search</a><a href="#audit">Audit</a><a href="#design">Design</a><a href="#plans">Plans</a><a href="#update">Updating</a><a href="#history">History</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Mythic Bike Works website</h1>
+    <p>Everything about the new site in one place: every page with live previews, the to-do list, business facts, prices, search plan, audit scores and history. Hidden from search engines.</p>
+    <div class="quick">
+      <a class="primary" href="../board/" target="_blank" rel="noopener"><strong>Visual board</strong><span>Every page and size on a zoomable canvas</span></a>
+      <a href="../" target="_blank" rel="noopener"><strong>Live site</strong><span>https://andrew-most-likely.github.io/mythicbikeworks/</span></a>
+      <a href="https://github.com/Andrew-most-likely/mythicbikeworks" target="_blank" rel="noopener"><strong>GitHub repo</strong><span>Andrew-most-likely/mythicbikeworks</span></a>
+      <a hidden href="#" target="_blank" rel="noopener"><strong>Project notes doc</strong><span>Shareable write-up for Matt</span></a>
+    </div>
+  </div>
+</div>
+
+<main>
+<section class="block" id="pages">
+  <div class="wrap">
+    <div class="block-head"><div><h2>Pages</h2><p>Each preview is the live page on GitHub Pages, scrollable inside its frame. Switch sizes to see the phone and tablet layouts.</p></div></div>
+    <div class="pages">
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Home</h3><p>Local search: bike shop and repair in Wakefield, Peace Dale and South County. Services, Cane Creek bar, suspension, wheels and builds, reviews, hours, contact form.</p></div>
+          <div class="pc-links">
+            <a href="../" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Home">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../" title="Home preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Cane Creek service center</h3><p>East Coast and nationwide searches for Cane Creek service: Helm, Kitsuma, DB Air, DB Coil. Mail-in steps and FAQ.</p></div>
+          <div class="pc-links">
+            <a href="../cane-creek-service-center/" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Cane Creek service center">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../cane-creek-service-center/" title="Cane Creek service center preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Suspension service</h3><p>Mail-in fork and shock service for every brand across the Northeast. Pricing, warning signs, mail-in steps and FAQ.</p></div>
+          <div class="pc-links">
+            <a href="../suspension-service/" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Suspension service">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../suspension-service/" title="Suspension service preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>Thank-you page</h3><p>Shown after the form is sent when JavaScript is off. Links onward to keep visitors on the site.</p></div>
+          <div class="pc-links">
+            <a href="../thanks.html" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for Thank-you page">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../thanks.html" title="Thank-you page preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+
+      <article class="page-card">
+        <div class="pc-head">
+          <div><h3>404 page</h3><p>Shown for broken links. Offers the main pages instead of a dead end.</p></div>
+          <div class="pc-links">
+            <a href="../404.html" target="_blank" rel="noopener">Open live</a>
+          </div>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size for 404 page">
+          <button type="button" class="on" data-size="desktop">Laptop</button>
+          <button type="button" data-size="tablet">Tablet</button>
+          <button type="button" data-size="phone">Phone</button>
+        </div>
+        <div class="frame-wrap desktop" data-wrap>
+          <iframe src="../404.html" title="404 page preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="todo">
+  <div class="wrap">
+    <div class="block-head">
+      <div><h2>To-do</h2><p>Ticks are saved in this browser only.</p></div>
+      <div class="prog-wrap"><div class="progress"><span data-bar></span></div><span data-total></span></div>
+    </div>
+    <div class="acts"><div class="act-group"><h3>Photos (Matt) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Photos (Matt)::Professional headshots of owner Matt Cappelli, 2 or 3 options"><span>Professional headshots of owner Matt Cappelli, 2 or 3 options</span></label></li>
+<li><label><input type="checkbox" data-key="Photos (Matt)::Photos of Matt working: suspension on the bench, wheel building, a customer handoff"><span>Photos of Matt working: suspension on the bench, wheel building, a customer handoff</span></label></li>
+<li><label><input type="checkbox" data-key="Photos (Matt)::Storefront photo so riders recognize the building"><span>Storefront photo so riders recognize the building</span></label></li>
+<li><label><input type="checkbox" data-key="Photos (Matt)::Shop interior and a few bikes Matt has built"><span>Shop interior and a few bikes Matt has built</span></label></li>
+<li><label><input type="checkbox" data-key="Photos (Matt)::Review old-site photos, including the main jump photo; replace any that don&#x27;t show the current shop"><span>Review old-site photos, including the main jump photo; replace any that don&#x27;t show the current shop</span></label></li></ul></div>
+<div class="act-group"><h3>Confirm before sharing (Matt) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Every price (all from the old 2019-era Wix site)"><span>Every price (all from the old 2019-era Wix site)</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Tubeless setup price: old site said both $30 and $40"><span>Tubeless setup price: old site said both $30 and $40</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Hours: one listing shows Wed 12-5 and Sat 9-2"><span>Hours: one listing shows Wed 12-5 and Sat 9-2</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Cane Creek wording: only East Coast service center; VIP dealer, one of 9 in the U.S."><span>Cane Creek wording: only East Coast service center; VIP dealer, one of 9 in the U.S.</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Cane Creek models named: Helm, Kitsuma, DB Air, DB Coil"><span>Cane Creek models named: Helm, Kitsuma, DB Air, DB Coil</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Fox, RockShox and Marzocchi named as serviced brands"><span>Fox, RockShox and Marzocchi named as serviced brands</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Which other brands he dominates in the Northeast (each can get its own page)"><span>Which other brands he dominates in the Northeast (each can get its own page)</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Is &quot;King&quot; Chris King? Add to brand list?"><span>Is &quot;King&quot; Chris King? Add to brand list?</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Typical turnaround for tune-ups and suspension"><span>Typical turnaround for tune-ups and suspension</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Drop-off on closed days?"><span>Drop-off on closed days?</span></label></li>
+<li><label><input type="checkbox" data-key="Confirm before sharing (Matt)::Mail-in details: shipping address, packing rules, return shipping cost"><span>Mail-in details: shipping address, packing rules, return shipping cost</span></label></li></ul></div>
+<div class="act-group"><h3>Setup (Andrew) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Setup (Andrew)::Web3Forms key in index.html (form does not send email until then)"><span>Web3Forms key in index.html (form does not send email until then)</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Claim and update Google Business Profile"><span>Claim and update Google Business Profile</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Move hosting to Cloudflare Pages"><span>Move hosting to Cloudflare Pages</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Transfer mythicbikeworks.com off Wix (check shop email records first)"><span>Transfer mythicbikeworks.com off Wix (check shop email records first)</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Shop email on the domain via Cloudflare Email Routing"><span>Shop email on the domain via Cloudflare Email Routing</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Cloudflare Web Analytics for visitor stats"><span>Cloudflare Web Analytics for visitor stats</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Submit sitemap in Google Search Console after the domain is live"><span>Submit sitemap in Google Search Console after the domain is live</span></label></li>
+<li><label><input type="checkbox" data-key="Setup (Andrew)::Ask QBP rep for API access and the catalog key"><span>Ask QBP rep for API access and the catalog key</span></label></li></ul></div>
+<div class="act-group"><h3>Search, off-site (Matt + Andrew) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Search, off-site (Matt + Andrew)::Ask customers for Google reviews that mention the work done"><span>Ask customers for Google reviews that mention the work done</span></label></li>
+<li><label><input type="checkbox" data-key="Search, off-site (Matt + Andrew)::Ask Cane Creek to link the site from its dealer locator"><span>Ask Cane Creek to link the site from its dealer locator</span></label></li>
+<li><label><input type="checkbox" data-key="Search, off-site (Matt + Andrew)::Claim Bing Places and Apple Business Connect"><span>Claim Bing Places and Apple Business Connect</span></label></li>
+<li><label><input type="checkbox" data-key="Search, off-site (Matt + Andrew)::Update Yelp, Trailforks, Pinkbike listings with the website"><span>Update Yelp, Trailforks, Pinkbike listings with the website</span></label></li>
+<li><label><input type="checkbox" data-key="Search, off-site (Matt + Andrew)::Website link in the Instagram bio"><span>Website link in the Instagram bio</span></label></li>
+<li><label><input type="checkbox" data-key="Search, off-site (Matt + Andrew)::Ask local riding groups and URI cycling to link the shop"><span>Ask local riding groups and URI cycling to link the shop</span></label></li></ul></div>
+<div class="act-group"><h3>Site additions once Matt answers (Andrew) <span class="count" data-count></span></h3><ul><li><label><input type="checkbox" data-key="Site additions once Matt answers (Andrew)::Owner section with Matt&#x27;s headshot and short bio"><span>Owner section with Matt&#x27;s headshot and short bio</span></label></li>
+<li><label><input type="checkbox" data-key="Site additions once Matt answers (Andrew)::Short FAQ on the home page: appointments, turnaround, e-bikes, kids&#x27; bikes"><span>Short FAQ on the home page: appointments, turnaround, e-bikes, kids&#x27; bikes</span></label></li>
+<li><label><input type="checkbox" data-key="Site additions once Matt answers (Andrew)::Optional notice bar for holiday closures or seasonal offers"><span>Optional notice bar for holiday closures or seasonal offers</span></label></li></ul></div>
+</div>
+  </div>
+</section>
+
+<section class="block" id="facts">
+  <div class="wrap grid2">
+    <div>
+      <div class="block-head"><div><h2>Business facts</h2><p>What the site states, and what Matt still needs to confirm.</p></div></div>
+      <table><thead><tr><th>Fact</th><th>On the site</th><th>Status</th></tr></thead><tbody><tr><td>Owner</td><td>Matt Cappelli (not yet shown on the site)</td><td><span class="tag ok">Confirmed</span></td></tr>
+<tr><td>Address</td><td>1207 Kingstown Rd, Peace Dale, RI 02879</td><td><span class="tag ok">Confirmed</span></td></tr>
+<tr><td>Phone</td><td>401-218-0029</td><td><span class="tag ok">Confirmed</span></td></tr>
+<tr><td>Hours</td><td>Mon, Thu, Sat 9am-5pm; Fri 9am-6pm; Tue, Wed, Sun closed</td><td><span class="tag verify">Verify</span></td></tr>
+<tr><td>Instagram</td><td>@mythicbikeworks</td><td><span class="tag ok">Confirmed</span></td></tr>
+<tr><td>Location</td><td>On the South County Bike Path, free secure bike parking</td><td><span class="tag ok">Confirmed</span></td></tr>
+<tr><td>Cane Creek</td><td>Only suspension service center on the East Coast</td><td><span class="tag verify">Verify</span></td></tr>
+<tr><td>Cane Creek</td><td>VIP dealer, one of 9 in the U.S.</td><td><span class="tag verify">Verify</span></td></tr>
+<tr><td>Google rating</td><td>5.0 (36 reviews per cyclingguider)</td><td><span class="tag ok">Confirmed</span></td></tr></tbody></table>
+    </div>
+    <div>
+      <div class="block-head"><div><h2>Content rules</h2><p>Apply to every change, on every page.</p></div></div>
+      <div class="card rules"><ul class="plain"><li>Do not mention the Peace Dale Ramp Room; it is closed.</li>
+<li>No online sales; the site sends requests by email only.</li>
+<li>Reviews quoted word for word, first name and last initial only.</li>
+<li>No AI-template styling: no pill buttons, orange labels, check-circle bullets, glass blur, hover-lift cards, pulsing dots, fade-ins, star rows.</li>
+<li>Brand list: Cane Creek, Transition, Ibis, Surly, Jamis, NOX Composites, Light Bicycle, CushCore, DT Swiss, Sapim.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="prices">
+  <div class="wrap">
+    <div class="block-head"><div><h2>Prices</h2><p>All from the old Wix site (archived Jan 15, 2026; footer said 2019). Labor only, parts extra. Matt must confirm each one.</p></div></div>
+    <table><thead><tr><th>Service</th><th>Price</th><th>Old site page</th><th>Note</th></tr></thead><tbody><tr><td>Tune-up</td><td class="num">$75</td><td>/service</td><td class="warn"></td></tr>
+<tr><td>Disc brake service</td><td class="num">$25 per brake</td><td>/service</td><td class="warn"></td></tr>
+<tr><td>Tubeless setup</td><td class="num">$30 per wheel</td><td>/wheels</td><td class="warn">Old /service page said $40</td></tr>
+<tr><td>Wheel true &amp; tension</td><td class="num">$30 each</td><td>/wheels</td><td class="warn"></td></tr>
+<tr><td>Hub bearings</td><td class="num">$30 each</td><td>/wheels</td><td class="warn"></td></tr>
+<tr><td>Assembly, pack &amp; ship</td><td class="num">$75; $120 round trip</td><td>/service</td><td class="warn"></td></tr>
+<tr><td>Repairs &amp; installs</td><td class="num">Quoted</td><td>/service</td><td class="warn"></td></tr>
+<tr><td>Suspension basic (50 hr)</td><td class="num">$50 per fork or shock</td><td>Home page</td><td class="warn"></td></tr>
+<tr><td>Suspension overhaul (200 hr)</td><td class="num">$140 each</td><td>Home page</td><td class="warn"></td></tr>
+<tr><td>Linkage bearings</td><td class="num">Quoted</td><td>Home page</td><td class="warn"></td></tr></tbody></table>
+  </div>
+</section>
+
+<section class="block" id="seo">
+  <div class="wrap">
+    <div class="block-head"><div><h2>Search plan</h2><p>Three pages, three kinds of search. Nothing ranks until mythicbikeworks.com points at the site.</p></div></div>
+    <table><thead><tr><th>Page</th><th>Aimed at searches like</th><th>Reach</th></tr></thead><tbody><tr><td>Home</td><td>bike shop Wakefield RI, bike repair South Kingstown, tune-up Narragansett</td><td>South County, RI</td></tr>
+<tr><td>Cane Creek service center</td><td>Cane Creek service center, Kitsuma rebuild, DB Air service, Helm fork service</td><td>East Coast and U.S., by mail</td></tr>
+<tr><td>Suspension service</td><td>mail-in fork service, shock rebuild Northeast, Fox or RockShox service</td><td>Northeast, by mail</td></tr></tbody></table>
+  </div>
+</section>
+
+<section class="block" id="audit">
+  <div class="wrap">
+    <div class="block-head"><div><h2>Lighthouse audit</h2><p>Google Lighthouse 12 on the live GitHub Pages site, Oct 13, 2026. Home on a simulated slow phone varies between runs.</p></div></div>
+    <table><thead><tr><th>Page</th><th>Speed, phone</th><th>Speed, laptop</th><th>Accessibility</th><th>Best practices</th><th>SEO</th></tr></thead><tbody><tr><td>Home</td><td class="num">73-99</td><td class="num">99-100</td><td class="num">100</td><td class="num">100</td><td class="num">100</td></tr>
+<tr><td>Cane Creek service center</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td class="num">100</td></tr>
+<tr><td>Suspension service</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td class="num">100</td></tr></tbody></table>
+  </div>
+</section>
+
+<section class="block" id="design">
+  <div class="wrap">
+    <div class="block-head"><div><h2>Design</h2><p>Black and white from the logo, one anodized red from the shop photos. Archivo only. Every text pair meets WCAG AA contrast.</p></div></div>
+    <div class="swatches"><div class="swatch"><span style="background:#111311"></span><div><strong>Ink</strong> <code>#111311</code><p>Dark sections, header, footer</p></div></div>
+<div class="swatch"><span style="background:#f5f5f2"></span><div><strong>Paper</strong> <code>#f5f5f2</code><p>Page background</p></div></div>
+<div class="swatch"><span style="background:#e9e9e4"></span><div><strong>Tint</strong> <code>#e9e9e4</code><p>Reviews band</p></div></div>
+<div class="swatch"><span style="background:#141614"></span><div><strong>Text</strong> <code>#141614</code><p>Body text, 16.7:1 on paper</p></div></div>
+<div class="swatch"><span style="background:#595d57"></span><div><strong>Muted</strong> <code>#595d57</code><p>Secondary text, 6.2:1 on paper</p></div></div>
+<div class="swatch"><span style="background:#9a9e97"></span><div><strong>Muted on dark</strong> <code>#9a9e97</code><p>Secondary text on ink, 6.9:1</p></div></div>
+<div class="swatch"><span style="background:#c7271c"></span><div><strong>Red</strong> <code>#c7271c</code><p>Buttons and marks, 5.6:1 with white</p></div></div>
+<div class="swatch"><span style="background:#ef4a3c"></span><div><strong>Red on dark</strong> <code>#ef4a3c</code><p>Small marks on ink</p></div></div></div>
+  </div>
+</section>
+
+<section class="block" id="plans">
+  <div class="wrap grid2">
+    <div class="card">
+      <h3>Hosting and domain</h3>
+      <ol class="plain"><li>Connect the GitHub repo to Cloudflare Pages; every push publishes.</li>
+<li>If the domain has email, copy its mail records to Cloudflare first.</li>
+<li>In Wix, unlock the domain and get the transfer code; transfer to Cloudflare Registrar (no transfer within 60 days of registering or a previous transfer).</li>
+<li>Add mythicbikeworks.com as the Pages custom domain; HTTPS is automatic.</li>
+<li>Cloudflare Email Routing for shop@mythicbikeworks.com; Web Analytics for visitor stats.</li></ol>
+    </div>
+    <div class="card">
+      <h3>QBP part lookup (future)</h3>
+      <div class="flow">
+        <div><strong>Customer's browser</strong><p>Looks up a part</p></div><i>⇄</i>
+        <div class="key"><strong>Cloudflare Worker</strong><p>Keeps the QBP key secret</p></div><i>⇄</i>
+        <div><strong>QBP dealer API</strong><p>Catalog and stock</p></div>
+      </div>
+      <p class="note">The shop-computer lock applies to the QBP website login only. The API key is separate, comes from the QBP rep, and never goes in browser code. Drop shipping needs QBP approval and online payments, so it waits.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="update">
+  <div class="wrap">
+    <div class="block-head"><div><h2>Updating the site</h2><p>Edit, commit, push; the live site updates in about a minute.</p></div></div>
+    <table><thead><tr><th>To change</th><th>Edit</th></tr></thead><tbody><tr><td>Text, prices, brands, reviews</td><td><code>index.html</code></td></tr>
+<tr><td>Landing pages</td><td><code>tools/build_pages.py, then run it</code></td></tr>
+<tr><td>Colors, spacing, layout</td><td><code>assets/css/styles.css (then bump ?v=N)</code></td></tr>
+<tr><td>Form, open/closed status</td><td><code>assets/js/main.js (then bump ?v=N)</code></td></tr>
+<tr><td>Hours (3 places)</td><td><code>hours table + business details in index.html, HOURS in main.js</code></td></tr>
+<tr><td>Photos</td><td><code>assets/img/ as .webp, plus a -600 size</code></td></tr></tbody></table>
+  </div>
+</section>
+
+<section class="block" id="history">
+  <div class="wrap">
+    <div class="block-head"><div><h2>History</h2><p>13 commits. Re-run <code>python3 ~/Documents/mythicbikeworks-hub/build_hub.py</code> to refresh.</p></div></div>
+    <table><thead><tr><th>Commit</th><th>When</th><th>Change</th></tr></thead><tbody><tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/c99eb13" target="_blank" rel="noopener"><code>c99eb13</code></a></td><td>Oct 13, 20:02</td><td>Add design board at /board/ (hidden from search)</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/079ae29" target="_blank" rel="noopener"><code>079ae29</code></a></td><td>Oct 13, 19:46</td><td>Fix unreadable &#x27;Send another&#x27; button and let the phone menu fill the screen</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/0e978fb" target="_blank" rel="noopener"><code>0e978fb</code></a></td><td>Oct 13, 19:29</td><td>Keep dark sections rendered so contrast checks see their background</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/4f3a623" target="_blank" rel="noopener"><code>4f3a623</code></a></td><td>Oct 13, 19:25</td><td>Defer layout of below-the-fold sections with content-visibility</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/98e2f80" target="_blank" rel="noopener"><code>98e2f80</code></a></td><td>Oct 13, 19:16</td><td>Cut first-load layout time on slower phones</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/9d7edd2" target="_blank" rel="noopener"><code>9d7edd2</code></a></td><td>Oct 13, 19:06</td><td>Raise accessibility and speed scores, improve visitor flow</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/49d513c" target="_blank" rel="noopener"><code>49d513c</code></a></td><td>Oct 13, 18:57</td><td>Add Cane Creek and mail-in suspension landing pages for search</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/da17355" target="_blank" rel="noopener"><code>da17355</code></a></td><td>Oct 13, 18:52</td><td>Tune layout and search details after Cane Creek additions</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/906fe30" target="_blank" rel="noopener"><code>906fe30</code></a></td><td>Oct 13, 18:46</td><td>Link Cane Creek&#x27;s official VIP dealer list from the credentials bar</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/755d02e" target="_blank" rel="noopener"><code>755d02e</code></a></td><td>Oct 13, 18:40</td><td>Feature Cane Creek service center and VIP dealer status</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/52a6c53" target="_blank" rel="noopener"><code>52a6c53</code></a></td><td>Oct 13, 18:11</td><td>Make it easier to request service and reach the shop</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/a6e6865" target="_blank" rel="noopener"><code>a6e6865</code></a></td><td>Oct 13, 18:06</td><td>Improve phone, tablet and laptop layouts</td></tr>
+<tr><td><a href="https://github.com/Andrew-most-likely/mythicbikeworks/commit/65293c9" target="_blank" rel="noopener"><code>65293c9</code></a></td><td>Oct 13, 17:58</td><td>Initial Mythic Bike Works website</td></tr></tbody></table>
+  </div>
+</section>
+</main>
+
+<footer class="bottom"><div class="wrap">Project hub · hidden from search</div></footer>
+
+<script>
+(() => {
+  // Scale each preview iframe so a full-size page fits its frame.
+  const SIZES = { desktop: [1366, 900], tablet: [768, 1024], phone: [390, 844] };
+  const fit = (wrap) => {
+    const size = ["desktop", "tablet", "phone"].find((s) => wrap.classList.contains(s));
+    const [w, h] = SIZES[size];
+    const f = wrap.querySelector("iframe");
+    const scale = wrap.clientWidth / w;
+    f.style.width = w + "px"; f.style.height = h + "px"; f.style.transform = `scale(${scale})`;
+  };
+  const wraps = [...document.querySelectorAll("[data-wrap]")];
+  wraps.forEach(fit);
+  wraps.forEach((w) => new ResizeObserver(() => fit(w)).observe(w));
+  document.querySelectorAll(".toggle").forEach((t) => t.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    t.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
+    const wrap = t.nextElementSibling;
+    wrap.classList.remove("desktop", "tablet", "phone"); wrap.classList.add(b.dataset.size);
+    requestAnimationFrame(() => fit(wrap));
+  }));
+
+  // Checklist, saved per browser.
+  const KEY = "mbw-hub-checks";
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch {}
+  const boxes = [...document.querySelectorAll("[data-key]")];
+  const render = () => {
+    document.querySelectorAll(".act-group").forEach((g) => {
+      const b = [...g.querySelectorAll("input")];
+      g.querySelector("[data-count]").textContent = `${b.filter((x) => x.checked).length}/${b.length}`;
+    });
+    const done = boxes.filter((b) => b.checked).length;
+    document.querySelector("[data-bar]").style.width = (100 * done / boxes.length) + "%";
+    document.querySelector("[data-total]").textContent = `${done} of ${boxes.length} done`;
+  };
+  boxes.forEach((b) => {
+    b.checked = !!saved[b.dataset.key];
+    b.addEventListener("change", () => {
+      saved[b.dataset.key] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {}
+      render();
+    });
+  });
+  render();
+
+})();
+</script>
+</body>
+</html>
