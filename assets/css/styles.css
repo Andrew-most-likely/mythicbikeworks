@@ -61,7 +61,7 @@ h3 { font-weight: 700; font-stretch: 104%; font-size: 1.15rem; letter-spacing: -
 p { margin: 0; }
 ul { margin: 0; padding: 0; list-style: none; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.section-dark :focus-visible, .site-footer :focus-visible, .creds :focus-visible, .simple-page :focus-visible { outline-color: #fff; }
+.section-dark :focus-visible, .site-footer :focus-visible, .simple-page :focus-visible { outline-color: #fff; }
 ::selection { background: var(--ink); color: #fff; }
 
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
@@ -72,7 +72,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 .kicker { font-weight: 600; font-size: .95rem; color: var(--muted); margin-bottom: 12px; }
-.section-dark .kicker, .creds .kicker { color: var(--muted-dark); }
+.section-dark .kicker { color: var(--muted-dark); }
 .sub { margin-top: 18px; color: var(--muted); font-size: 1.125rem; max-width: 36rem; }
 .sub + .sub { margin-top: 12px; }
 .section-dark .sub { color: var(--muted-dark); }
@@ -105,11 +105,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section-dark .btn-outline-light { color: #fff; border-color: rgba(255,255,255,.7); }
 .section-dark .btn-outline-light:hover { background: #fff; color: var(--ink); border-color: #fff; }
 
-.text-link, .row-link, .creds-link {
+.text-link, .row-link {
   font-weight: 650; color: inherit;
   text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px;
 }
-.text-link:hover, .row-link:hover, .creds-link:hover { text-decoration-thickness: 3px; }
+.text-link:hover, .row-link:hover { text-decoration-thickness: 3px; }
 
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); color: var(--text); border-bottom: 1px solid transparent; transition: border-color .2s; }
@@ -153,22 +153,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 640px) {
   .hero-img { aspect-ratio: 4 / 5; object-position: 50% 35%; }
   .hero-actions .btn { flex: 1 1 100%; }
-}
-
-/* Cane Creek credentials: one black band */
-.creds { background: var(--ink); color: #fff; color-scheme: dark; }
-.creds-inner { display: flex; align-items: center; gap: 20px 48px; flex-wrap: wrap; padding-block: 30px; }
-.creds-brand { font-weight: 800; font-stretch: 112%; font-size: 1.5rem; letter-spacing: -.03em; padding-right: 48px; border-right: 1px solid var(--ink-line); line-height: 1.1; }
-.creds-list { display: flex; gap: 12px 48px; flex-wrap: wrap; flex: 1; }
-.creds-list li { display: flex; flex-direction: column; font-size: .95rem; color: var(--muted-dark); line-height: 1.4; }
-.creds-list strong { color: #fff; font-weight: 700; font-size: 1.05rem; }
-.creds-links { display: flex; gap: 10px 24px; flex-wrap: wrap; }
-.creds-link { font-size: .95rem; }
-.creds-ext { font-weight: 500; color: var(--muted-dark); }
-@media (max-width: 640px) {
-  .creds-brand { border-right: 0; padding-right: 0; width: 100%; }
-  .creds-list { flex-direction: column; flex: none; width: 100%; }
-  .creds-links { width: 100%; }
 }
 
 /* Sections */

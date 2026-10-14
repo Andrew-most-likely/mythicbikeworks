@@ -14,7 +14,7 @@ import re
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT_DIR, "src")
 SITE = "https://mythicbikeworks.com"
-VERSION = "12"  # bump when assets/css/styles.css or assets/js/main.js change
+VERSION = "13"  # bump when assets/css/styles.css or assets/js/main.js change
 
 SOUTH_COUNTY = ["Peace Dale", "Wakefield", "Kingston", "South Kingstown", "Narragansett", "North Kingstown",
                 "Charlestown", "Exeter", "Richmond", "Westerly", "Jamestown", "Newport"]
